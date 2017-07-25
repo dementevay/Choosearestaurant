@@ -2,7 +2,4 @@
 out
 target
 *.iml
-log
-*.patch
-pom.xml
 
