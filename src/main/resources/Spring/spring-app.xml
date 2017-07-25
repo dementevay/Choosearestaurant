@@ -20,6 +20,6 @@
 
     <context:component-scan base-package="com.dementevay.voting.repository"/>
 
-    <context:component-scan base-package="com.dementevay.voting.web"/>
+    <context:component-scan base-package="com.dementevay.voting.web.restaurant"/>
 
 </beans>

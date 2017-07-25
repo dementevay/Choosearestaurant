@@ -6,21 +6,22 @@ import com.dementevay.voting.HasId;
  * Created by Andrey Dementev on 24.07.17.
  */
 public class BaseEntity implements HasId {
+    public int id;
+
     public BaseEntity() {
+    }
+
+    public BaseEntity(Integer id) {
+        this.id = id;
     }
 
     @Override
     public Integer getId() {
-        return null;
+        return id;
     }
 
     @Override
     public void setId(Integer id) {
-
-    }
-
-    @Override
-    public boolean isNew() {
-        return false;
+        this.id = id;
     }
 }
