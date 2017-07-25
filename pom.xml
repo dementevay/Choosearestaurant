@@ -86,7 +86,6 @@
             <version>${logback.version}</version>
             <scope>runtime</scope>
         </dependency>
-
         <!-- Spring logging - off -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -112,6 +111,13 @@
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
             <version>1.2</version>
+        </dependency>
+
+        <!--DB-->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postgresql.version}</version>
         </dependency>
 
     </dependencies>
