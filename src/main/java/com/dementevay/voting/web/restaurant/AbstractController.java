@@ -7,6 +7,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -35,6 +37,7 @@ public abstract class AbstractController {
         service.delete(id, user_id);
     }
 
+    @RequestMapping(value = "/vote", method = RequestMethod.GET)
     public List<RestaurantWithMenu> getAll(LocalDateTime dateTime) {
         LOG.info("get all Restaurant for Date {}", dateTime);
         return service.getAll(dateTime);

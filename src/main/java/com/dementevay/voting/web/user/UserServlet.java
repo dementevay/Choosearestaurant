@@ -18,6 +18,6 @@ public class UserServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
-        req.getRequestDispatcher("/vote.jsp").forward(req, resp);
+        req.getRequestDispatcher("/jsp/vote.jsp").forward(req, resp);
     }
 }

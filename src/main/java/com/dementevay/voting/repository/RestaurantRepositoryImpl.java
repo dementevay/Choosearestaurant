@@ -3,6 +3,9 @@ package com.dementevay.voting.repository;
 import com.dementevay.voting.to.RestaurantWithMenu;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -11,6 +14,9 @@ import java.util.List;
  */
 @Repository
 public class RestaurantRepositoryImpl implements RestaurantRepository{
+
+    @PersistenceContext
+    private EntityManager em;
 
     public RestaurantWithMenu get(int id, LocalDateTime dateTime) {
         return null;
