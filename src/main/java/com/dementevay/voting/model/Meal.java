@@ -1,8 +1,6 @@
 package com.dementevay.voting.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 /**
@@ -12,6 +10,7 @@ import java.time.LocalDateTime;
 @Table(name = "meals")
 public class Meal extends NamedEntity {
 
+    @CollectionTable(name = "restaurants", joinColumns = @JoinColumn(name = "id"))
     @Column(name = "restaurant_id", nullable = false)
     private int restaurant_id;
 

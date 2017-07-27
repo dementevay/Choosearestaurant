@@ -1,5 +1,6 @@
 package com.dementevay.voting.service;
 
+import com.dementevay.voting.model.Restaurant;
 import com.dementevay.voting.repository.RestaurantRepository;
 import com.dementevay.voting.to.RestaurantWithMenu;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,10 @@ public class RestaurantServiceImpl implements RestaurantService {
 
     public List<RestaurantWithMenu> getAll(LocalDateTime dateTime) {
         return repository.getAll(dateTime);
+    }
+
+    public List<Restaurant> getSS() {
+        return repository.getSS();
     }
 
     public RestaurantWithMenu create(String name, String menu, int user_id) {

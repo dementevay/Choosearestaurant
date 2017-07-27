@@ -1,5 +1,6 @@
 package com.dementevay.voting.repository;
 
+import com.dementevay.voting.model.Restaurant;
 import com.dementevay.voting.to.RestaurantWithMenu;
 
 import java.time.LocalDateTime;
@@ -19,5 +20,7 @@ public interface RestaurantRepository {
     public RestaurantWithMenu create(String name, String menu, int user_id) ;
 
     public void update(int id, String name, String menu, int user_id) ;
+
+    public List<Restaurant> getSS();
 
 }

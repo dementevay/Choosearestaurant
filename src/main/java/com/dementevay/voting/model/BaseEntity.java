@@ -8,7 +8,7 @@ import javax.persistence.*;
  * Created by Andrey Dementev on 24.07.17.
  */
 @MappedSuperclass
-@Access(AccessType.FIELD)
+@Access(AccessType.FIELD)//доступ напрямую через поля (без геттеров и сеттеров)
 public class BaseEntity implements HasId {
     public static final int START_SEQ = 100000;
 

@@ -12,9 +12,15 @@ import java.util.Set;
 /**
  * Created by Andrey Dementev on 24.07.17.
  */
+@NamedQueries({
+        @NamedQuery(name = User.GET_ALL,
+                query = "SELECT m FROM User m")
+})
+
 @Entity
 @Table(name = "users")
 public class User extends NamedEntity {
+    public static final String GET_ALL = "User.getAll";
 
     @Enumerated(EnumType.STRING)
     @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"))

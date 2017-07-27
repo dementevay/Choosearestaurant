@@ -13,10 +13,12 @@ public class Vote extends BaseEntity{
     @Column(name = "date_time", nullable = false)
     private LocalDateTime dateTime;
 
-    @JoinColumn(name = "user_id", nullable = false)
+    @CollectionTable(name = "users", joinColumns = @JoinColumn(name = "id"))
+    @Column(name = "user_id", nullable = false)
     private int user_id;
 
-    @JoinColumn(name = "restaurant_id", nullable = false)
+    @CollectionTable(name = "restaurants", joinColumns = @JoinColumn(name = "id"))
+    @Column(name = "restaurant_id", nullable = false)
     private int restaurant_id;
 
     public Vote() {

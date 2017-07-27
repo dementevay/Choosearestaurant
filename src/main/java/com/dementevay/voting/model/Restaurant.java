@@ -10,15 +10,16 @@ import javax.persistence.Table;
  */
 //@SuppressWarnings("JpaQlInspection")
 @NamedQueries({
-        @NamedQuery(name = Restaurant.ALL_SORTED,
-                query = "SELECT r FROM Restaurant r WHERE r.id=:id")
+        @NamedQuery(name = Restaurant.GET_ALL,
+                query = "SELECT r FROM Restaurant r")
 })
+
 
 @Entity
 @Table(name = "restaurants")
 public class Restaurant extends NamedEntity {
-    public static final String ALL_SORTED = "Restaurant.getAll";
-    public static final String DELETE = "Meal.delete";
-    public static final String GET_BETWEEN = "Meal.getBetween";
+    public static final String GET_ALL = "Restaurant.getAll";
+    public static final String DELETE = "Restaurant.delete";
+    public static final String GET_BETWEEN = "Restaurant.getBetween";
 
 }
