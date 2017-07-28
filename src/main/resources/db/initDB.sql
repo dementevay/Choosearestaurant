@@ -34,11 +34,11 @@ CREATE TABLE meals (
   id              INTEGER PRIMARY KEY DEFAULT nextval('global_seq'),
   restaurant_id   INTEGER NOT NULL,
   date_time       TIMESTAMP NOT NULL,
-  name            TEXT NOT NULL,
+  description     TEXT NOT NULL,
   price           INT NOT NULL,
   FOREIGN KEY (restaurant_id) REFERENCES restaurants (id) ON DELETE CASCADE
 );
-/*CREATE UNIQUE INDEX meals_unique_user_datetime_idx ON meals(restourant_id, date_time)*/
+CREATE INDEX meals_unique_restaurant_datetime_idx ON meals(restaurant_id, date_time);
 
 CREATE TABLE vote (
   id              INTEGER PRIMARY KEY DEFAULT nextval('global_seq'),

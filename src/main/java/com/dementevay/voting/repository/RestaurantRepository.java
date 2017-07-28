@@ -1,7 +1,6 @@
 package com.dementevay.voting.repository;
 
 import com.dementevay.voting.model.Restaurant;
-import com.dementevay.voting.to.RestaurantWithMenu;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -11,13 +10,13 @@ import java.util.List;
  */
 public interface RestaurantRepository {
 
-    public RestaurantWithMenu get(int id, LocalDateTime dateTime);
+    public Restaurant get(int id);
 
     public void delete(int id, int user_id) ;
 
-    public List<RestaurantWithMenu> getAll(LocalDateTime dateTime) ;
+    public List<Restaurant> getAll() ;
 
-    public RestaurantWithMenu create(String name, String menu, int user_id) ;
+    public Restaurant create(String name, String menu, int user_id) ;
 
     public void update(int id, String name, String menu, int user_id) ;
 

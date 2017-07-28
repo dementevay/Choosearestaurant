@@ -1,7 +1,8 @@
 package com.dementevay.voting.repository;
 
+import com.dementevay.voting.model.Meal;
 import com.dementevay.voting.model.Restaurant;
-import com.dementevay.voting.to.RestaurantWithMenu;
+import com.dementevay.voting.util.TimeUtil;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,8 +21,10 @@ public class RestaurantRepositoryImpl implements RestaurantRepository{
     @PersistenceContext
     private EntityManager em;
 
-    public RestaurantWithMenu get(int id, LocalDateTime dateTime) {
-        return null;
+    public Restaurant get(int id) {
+        return em.createNamedQuery(Restaurant.GET_ID, Restaurant.class)
+                .setParameter("id", id)
+                .getSingleResult();
     }
 
     @Transactional
@@ -29,20 +32,24 @@ public class RestaurantRepositoryImpl implements RestaurantRepository{
 
     }
 
-    public List<RestaurantWithMenu> getAll(LocalDateTime dateTime) {
-        return null;//em.createNamedQuery(Restaurant.GET_ALL, Restaurant.class).setParameter(dateTime).getResultList();
+    public List<Restaurant> getAll() {
+        return em.createNamedQuery(Restaurant.GET_ALL, Restaurant.class).getResultList();
     }
 
     public List<Restaurant> getSS() {
         //return em.createNamedQuery(Meal.GET_ALL,Meal.class).setParameter("userId", userId).getResultList();
-        List<Restaurant> list =
-                em.createNamedQuery(Restaurant.GET_ALL, Restaurant.class)
-                        .getResultList();
+        //LocalDateTime dateTime = TimeUtil.stringToLocalDateTime("2017-07-26 10:00:00");
+        List<Restaurant> list = em.createNamedQuery(Restaurant.GET_ALL, Restaurant.class).getResultList();
+        /*for (Restaurant r: list) {
+            r.setMenu(em.createNamedQuery(Meal.GET_FOR_RESTAURANT_BY_DAY, Meal.class)
+                    .setParameter("id", r.getId()).setParameter("dt", dateTime)
+                    .getResultList());
+        }*/
         return list;
     }
 
     @Transactional
-    public RestaurantWithMenu create(String name, String menu, int user_id) {
+    public Restaurant create(String name, String menu, int user_id) {
         return null;
     }
 

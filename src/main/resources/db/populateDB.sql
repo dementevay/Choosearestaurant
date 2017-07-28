@@ -1,5 +1,7 @@
 DELETE FROM user_roles;
 DELETE FROM meals;
+DELETE FROM vote;
+DELETE FROM restaurants;
 DELETE FROM users;
 ALTER SEQUENCE global_seq RESTART WITH 100000;
 
@@ -27,7 +29,7 @@ INSERT INTO restaurants (name) VALUES
   ('McBurger'),
   ('Prague');
 
-INSERT INTO meals (restaurant_id, date_time, name, price) VALUES
+INSERT INTO meals (restaurant_id, date_time, description, price) VALUES
   ('100004','2017-07-26 10:00:00', 'Борщ', 100),
   ('100004','2017-07-26 10:00:00', 'Шашлык', 200),
   ('100004','2017-07-26 10:00:00', 'Картофель жаренный', 50),

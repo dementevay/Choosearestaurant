@@ -1,11 +1,15 @@
 package com.dementevay.voting.web;
 
+import com.dementevay.voting.model.Meal;
 import com.dementevay.voting.model.Restaurant;
+import com.dementevay.voting.service.MealService;
 import com.dementevay.voting.service.RestaurantService;
 import com.dementevay.voting.to.RestaurantWithMenu;
+import com.dementevay.voting.util.TimeUtil;
 import com.dementevay.voting.web.restaurant.AbstractController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.time.LocalDateTime;
@@ -18,18 +22,19 @@ import java.util.List;
 public class RootController extends AbstractController{
 
     @Autowired
-    public RootController(RestaurantService restaurantService) {super(restaurantService);}
+    public RootController(RestaurantService restaurantService, MealService serviceMeal) {super(restaurantService,serviceMeal);}
 
     @GetMapping("/")
-    public String root() {
-//        LocalDateTime ldt = LocalDateTime.MAX;
-//        getAll(ldt);
+    public String root(Model model) {
+        LocalDateTime dateTime = TimeUtil.stringToLocalDateTime("2017-07-26 10:00:00");
+        List<RestaurantWithMenu> list = getAllRestaurantWithMenuByDay(dateTime);
+        model.addAttribute("restaurants_list", list);//getAll(TimeUtil.stringToLocalDateTime("2017-07-26 10:00:00")
         return "vote";
     }
 
     @Override
-    public RestaurantWithMenu get(int id, LocalDateTime dateTime) {
-        return super.get(id, dateTime);
+    public Restaurant get(int id) {
+        return super.get(id);
     }
 
     @Override
@@ -37,13 +42,9 @@ public class RootController extends AbstractController{
         super.delete(id, user_id);
     }
 
-    @Override
-    public List<RestaurantWithMenu> getAll(LocalDateTime dateTime) {
-        return super.getAll(dateTime);
-    }
 
     @Override
-    public RestaurantWithMenu create(String name, String menu, int user_id) {
+    public Restaurant create(String name, String menu, int user_id) {
         return super.create(name, menu, user_id);
     }
 

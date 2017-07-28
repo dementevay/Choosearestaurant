@@ -37,25 +37,25 @@
         <th>Delete</th>
     </tr>
 
-    <c:forEach items="${meals_list}" var="me" varStatus="status">
-        <%--<jsp:useBean id="me" scope="page" type="ru.javawebinar.topjava.model.MealWithExceed"/>
-        <tr class="${me.exceed ? 'exceeded':'nonexceeded'}">
-            <td>${me.id}</td>
-            <td><%=TimeUtil.formatDateTime(me.getDateTime())%></td>
-            <td>${me.description}</td>
-            <td>${me.calories}</td>
-            <td>${me.exceed}</td>
+    <c:forEach items="${restaurants_list}" var="restaurant" varStatus="status">
+        <jsp:useBean id="restaurant" scope="page" type="com.dementevay.voting.to.RestaurantWithMenu"/>
+        <tr <%--class="${restaurant.name ? 'exceeded':'nonexceeded'}"--%>>
+            <td>${restaurant.id}</td>
+            <%--<td><%=TimeUtil.formatDateTime(me.getDateTime())%></td>--%>
+            <td>${restaurant.name}</td>
+            <td>menu</td>
+            <td>choose</td>
             <td>
                 <form method="post">
-                    <button name="edit_btn" value="${me.id}">Edit</button>
+                    <button name="edit_btn" value="${restaurant.id}">Edit</button>
                 </form>
             </td>
             <td>
                 <form method="post">
-                    <button name="delete_btn" value="${me.id}">Delete</button>
+                    <button name="delete_btn" value="${restaurant.id}">Delete</button>
                 </form>
             </td>
-        </tr>--%>
+        </tr>
     </c:forEach>
 
     </thead>
