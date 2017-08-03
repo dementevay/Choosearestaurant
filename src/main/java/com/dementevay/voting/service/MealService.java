@@ -10,17 +10,19 @@ import java.util.List;
  */
 public interface MealService {
 
-    public Meal get(int id);
+    Meal get(int id);
 
-    public List<Meal> getForRestaurantByDay(int restaurant_id, LocalDateTime dateTime);
+    List<Meal> getForRestaurantByDay(int restaurant_id, LocalDateTime dateTime);
 
-    public Meal getForRestaurant(int restaurant_id);
+    List<Meal> getForRestaurant(int restaurant_id);
 
-    public void delete(int id, int user_id) ;
+    void delete(int id, int user_id);
 
-    public List<Meal> getAll() ;
+    List<Meal> getAll();
 
-    public Meal create(String name, String menu, int user_id) ;
+    void save(Meal meal, int user_id);
 
-    public void update(int id, String name, String menu, int user_id) ;
+    Meal create(String name, String menu, int user_id);
+
+    void update(int id, String name, String menu, int user_id);
 }

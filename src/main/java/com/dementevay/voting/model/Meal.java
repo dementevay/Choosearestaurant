@@ -1,9 +1,11 @@
 package com.dementevay.voting.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -17,6 +19,7 @@ import java.time.LocalDateTime;
 @NamedQueries({
         @NamedQuery(name = Meal.GET_ALL, query = "SELECT m FROM Meal m"),
         @NamedQuery(name = Meal.GET, query = "SELECT m FROM Meal m WHERE m.id = :id"),
+        @NamedQuery(name = Meal.GET_FOR_RESTAURANT, query = "SELECT m FROM Meal m WHERE m.restaurant_id = :id"),
         @NamedQuery(name = Meal.GET_FOR_RESTAURANT_BY_DAY, query = "SELECT m FROM Meal m WHERE m.restaurant_id = :id and m.dateTime = :dt")
 })
 
@@ -28,6 +31,7 @@ public class Meal extends BaseEntity {
     public static final String GET = "Meal.get";
     public static final String DELETE = "Meal.delete";
     public static final String GET_FOR_RESTAURANT_BY_DAY = "Meal.get_for_RESTAURANT_by_day";
+    public static final String GET_FOR_RESTAURANT = "Meal.get_for_RESTAURANT";
 
     @CollectionTable(name = "restaurants", joinColumns = @JoinColumn(name = "id"))
     @JoinColumn(name = "restaurant_id", nullable = false)
@@ -38,10 +42,12 @@ public class Meal extends BaseEntity {
     private String description;
 
     @Column(name = "date_time", nullable = false)
+    @NotNull
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     private LocalDateTime dateTime;
 
     @Column(name = "price", nullable = false)
-    @Length(min = 1, max = 10000000)
+    @Range(min = 0, max = 10000000)
     private int price;//в копейках ru
 
    /* @ManyToOne(fetch = FetchType.LAZY)

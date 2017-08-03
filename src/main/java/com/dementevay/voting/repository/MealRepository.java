@@ -14,11 +14,13 @@ public interface MealRepository {
 
     public List<Meal> getForRestaurantByDay(int restaurant_id, LocalDateTime dateTime);
 
-    public Meal getForRestaurant(int restaurant_id);
+    public List<Meal> getForRestaurant(int restaurant_id);
 
     public void delete(int id, int user_id) ;
 
     public List<Meal> getAll() ;
+
+    void save(Meal meal, int user_id);
 
     public Meal create(String name, String menu, int user_id) ;
 

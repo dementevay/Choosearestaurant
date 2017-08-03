@@ -1,17 +1,17 @@
 package com.dementevay.voting.web;
 
-import com.dementevay.voting.model.Meal;
-import com.dementevay.voting.model.Restaurant;
+import com.dementevay.voting.AuthorizedUser;
+import com.dementevay.voting.model.BaseEntity;
 import com.dementevay.voting.service.MealService;
 import com.dementevay.voting.service.RestaurantService;
 import com.dementevay.voting.to.RestaurantWithMenu;
-import com.dementevay.voting.util.TimeUtil;
-import com.dementevay.voting.web.restaurant.AbstractController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -19,37 +19,47 @@ import java.util.List;
  * Created by Andrey Dementev on 26.07.17.
  */
 @Controller
-public class RootController extends AbstractController{
+public class RootController extends RestaurantAbstractController {
 
     @Autowired
     public RootController(RestaurantService restaurantService, MealService serviceMeal) {super(restaurantService,serviceMeal);}
 
     @GetMapping("/")
-    public String root(Model model) {
-        LocalDateTime dateTime = TimeUtil.stringToLocalDateTime("2017-07-26 10:00:00");
-        List<RestaurantWithMenu> list = getAllRestaurantWithMenuByDay(dateTime);
+    public String root(HttpServletRequest request, Model model) {
+        String str = request.getParameter("dateTime");
+        LocalDateTime dateTime = str != null ?
+                LocalDateTime.parse(str) :
+                LocalDateTime.parse("2017-07-26T10:00:00");//hardcode for test data
+        List<RestaurantWithMenu> list = getAllByDate(dateTime);
         model.addAttribute("restaurants_list", list);//getAll(TimeUtil.stringToLocalDateTime("2017-07-26 10:00:00")
         return "vote";
     }
 
+    @PostMapping("vote")
+    public void postRequest(HttpServletRequest request, Model model) {
+        int id = Integer.valueOf(request.getParameter("user_id"));
+        AuthorizedUser.setId(id > 0 ? id:BaseEntity.START_SEQ);
+        root(request, model);
+    }
+
     @Override
-    public Restaurant get(int id) {
+    public RestaurantWithMenu get(int id) {
         return super.get(id);
     }
 
     @Override
-    public void delete(int id, int user_id) {
-        super.delete(id, user_id);
+    public void delete(int id) {
+        super.delete(id);
     }
 
+
+    /*@Override
+    public Restaurant create(String name, String menu, int userId) {
+        return super.create(name, menu, userId);
+    }
 
     @Override
-    public Restaurant create(String name, String menu, int user_id) {
-        return super.create(name, menu, user_id);
-    }
-
-    @Override
-    public void update(int id, String name, String menu, int user_id) {
-        super.update(id, name, menu, user_id);
-    }
+    public void update(int id, String name, String menu, int userId) {
+        super.update(id, name, menu, userId);
+    }*/
 }

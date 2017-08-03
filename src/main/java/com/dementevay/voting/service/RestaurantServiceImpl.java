@@ -5,12 +5,12 @@ import com.dementevay.voting.repository.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 /**
  * Created by Andrey Dementev on 25.07.17.
  */
+
 @Service
 public class RestaurantServiceImpl implements RestaurantService {
 
@@ -21,27 +21,29 @@ public class RestaurantServiceImpl implements RestaurantService {
         this.repository = repository;
     }
 
+    @Override
     public Restaurant get(int id) {
         return repository.get(id);
     }
 
-    public void delete(int id, int user_id) {
-        repository.delete(id, user_id);
-    }
-
+    @Override
     public List<Restaurant> getAll() {
         return repository.getAll();
     }
 
-    public List<Restaurant> getSS() {
-        return repository.getSS();
+    @Override
+    public int save(Restaurant restaurant, int userId) {
+        repository.save(restaurant, userId);
+        return restaurant.getId();
     }
 
-    public Restaurant create(String name, String menu, int user_id) {
-        return repository.create(name, menu, user_id);
+    @Override
+    public void delete(int id, int userId) {
+        repository.delete(id, userId);
     }
 
-    public void update(int id, String name, String menu, int user_id) {
-        repository.update(id, name, menu, user_id);
+    @Override
+    public void deleteAll(int userId) {
+        repository.deleteAll(userId);
     }
 }

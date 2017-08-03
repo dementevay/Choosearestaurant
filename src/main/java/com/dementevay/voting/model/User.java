@@ -14,14 +14,15 @@ import java.util.Set;
  * Created by Andrey Dementev on 24.07.17.
  */
 @NamedQueries({
-        @NamedQuery(name = User.GET_ALL,
-                query = "SELECT m FROM User m")
+        @NamedQuery(name = User.GET_ALL, query = "SELECT u FROM User u"),
+        @NamedQuery(name = User.GET_USER_ROLE, query = "SELECT u FROM User u WHERE u.id = :id")
 })
 
 @Entity
 @Table(name = "users")
 public class User extends NamedEntity {
     public static final String GET_ALL = "User.getAll";
+    public static final String GET_USER_ROLE = "User.ROLES";
 
     @Enumerated(EnumType.STRING)
     @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"))
@@ -29,7 +30,7 @@ public class User extends NamedEntity {
     @ElementCollection(fetch = FetchType.EAGER)
 //    @Fetch(FetchMode.SUBSELECT)
     @BatchSize(size = 200)
-    private Set<Role> roles;
+    protected Set<Role> roles;
 
     @Email
     @NotBlank

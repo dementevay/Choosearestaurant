@@ -1,17 +1,16 @@
 package com.dementevay.voting.to;
 
+import com.dementevay.voting.HasId;
 import com.dementevay.voting.model.Meal;
 import com.dementevay.voting.model.Restaurant;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by Andrey Dementev on 25.07.17.
  */
-public class RestaurantWithMenu {
-    private int id;
+public class RestaurantWithMenu implements HasId{
+    private Integer id;
     private String name;
     private List<Meal> menu;
 
@@ -21,28 +20,29 @@ public class RestaurantWithMenu {
         this.menu = menu;
     }
 
-    public int getId() {
+    public RestaurantWithMenu(int id, String name, List<Meal> menu) {
+        this.id = id;
+        this.name = name;
+        this.menu = menu;
+    }
+
+    public RestaurantWithMenu(){}
+
+    public Integer getId() {
         return id;
     }
 
-    /*public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
-    }*/
+    }
 
     public String getName() {
         return name;
     }
 
-    /*public void setName(String name) {
-        this.name = name;
-    }*/
-
     public List<Meal> getMenu() {
         return menu;
     }
 
-    /*public void setMenu(List<Meal> menu) {
-        this.menu = menu;
-    }*/
 }
 

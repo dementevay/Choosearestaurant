@@ -1,25 +1,25 @@
 package com.dementevay.voting.repository;
 
 import com.dementevay.voting.model.Restaurant;
+import com.dementevay.voting.to.RestaurantWithMenu;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Created by Andrey Dementev on 25.07.17.
  */
 public interface RestaurantRepository {
 
-    public Restaurant get(int id);
+    Restaurant get(int id);
 
-    public void delete(int id, int user_id) ;
+    void delete(int id, int user_id) ;
 
-    public List<Restaurant> getAll() ;
+    void deleteAll(int userId);
 
-    public Restaurant create(String name, String menu, int user_id) ;
+    List<Restaurant> getAll() ;
 
-    public void update(int id, String name, String menu, int user_id) ;
-
-    public List<Restaurant> getSS();
+    void save(Restaurant restaurant, int user_id);
 
 }

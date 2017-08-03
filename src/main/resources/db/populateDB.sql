@@ -19,10 +19,10 @@ INSERT INTO users (name, email, password, enabled)
 VALUES ('Admin', 'admin@gmail.com', 'password', TRUE );
 
 INSERT INTO user_roles (role, user_id) VALUES
-  ('ROLE_USER', 100000),
+  ('ROLE_ADMIN', 100000),
   ('ROLE_USER', 100001),
   ('ROLE_USER', 100002),
-  ('ROLE_ADMIN', 100003);
+  ('ROLE_USER', 100003);
 
 INSERT INTO restaurants (name) VALUES
   ('Берёзка'),

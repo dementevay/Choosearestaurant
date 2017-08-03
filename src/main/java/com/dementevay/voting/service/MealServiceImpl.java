@@ -31,12 +31,12 @@ public class MealServiceImpl implements MealService{
     }
 
     @Override
-    public Meal getForRestaurant(int restaurant_id) {
-        return null;
+    public List<Meal> getForRestaurant(int restaurant_id) {
+        return repository.getForRestaurant(restaurant_id);
     }
 
     @Override
-    public void delete(int id, int user_id) {
+    public void delete(int id, int userId) {
 
     }
 
@@ -46,12 +46,17 @@ public class MealServiceImpl implements MealService{
     }
 
     @Override
-    public Meal create(String name, String menu, int user_id) {
+    public void save(Meal meal, int userId) {
+        repository.save(meal, userId);
+    }
+
+    @Override
+    public Meal create(String name, String menu, int userId) {
         return null;
     }
 
     @Override
-    public void update(int id, String name, String menu, int user_id) {
+    public void update(int id, String name, String menu, int userId) {
 
     }
 }

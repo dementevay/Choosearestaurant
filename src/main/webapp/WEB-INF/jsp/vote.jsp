@@ -7,21 +7,25 @@
     <h2 align="center">(голосование проходит до 11:00)</h2>
 </head>
 <body>
-<form id="user-name-label" method="post">
-    <p><select>
-        <option selected value disabled>Выберите пользователя</option>
-        <option value="Админ">Админ</option>
-        <option value="Пользователь 1">Пользователь 1</option>
-        <option value="Пользователь 2">Пользователь 2</option>
-        <option value="Пользователь 3">Пользователь 3</option>
-    </select></p>
-    <%--<p><input type="submit" value="Отправить"></p>--%>
+
+<%! private static int id_user;%>
+
+<form name="user_id" method="post">
+    <p>Пользователь: <select autofocus required >
+        <option selected value="100000">Админ</option>
+        <option value="100001" >Пользователь 1</option>
+        <option value="100002" >Пользователь 2</option>
+        <option value="100003" >Пользователь 3</option>
+    </select>
+        <input type="submit" value="Применить"></p>
+    <p></p>
 </form>
 
-<form method="post" id="dateTimeForm">
+<form method="get" name="dateTime">
     <td>
-        <p>Сейчас: <input type="datetime-local" name="dateTimeNow" size="20" value="2017-12-31T01:02"></p>
-        <%--<p><input type="submit" name="Обновить"></p>--%>
+        <p>Сейчас: <input type="datetime-local" name="dateTimeNow" size="16" value="2017-12-31T01:02">
+            <input type="submit" value="Применить"></p>
+        <%--<p><input type="submit" name="Применить"></p>--%>
     </td>
 </form>
 
@@ -35,6 +39,7 @@
         <th width="15%">Выбрать</th>
         <th>Edit</th>
         <th>Delete</th>
+
     </tr>
 
     <c:forEach items="${restaurants_list}" var="restaurant" varStatus="status">
@@ -43,17 +48,24 @@
             <td>${restaurant.id}</td>
             <%--<td><%=TimeUtil.formatDateTime(me.getDateTime())%></td>--%>
             <td>${restaurant.name}</td>
-            <td>menu</td>
-            <td>choose</td>
+            <td>
+                <c:forEach items="${restaurant.menu}" var="meal" varStatus="status">
+                    <jsp:useBean id="meal" scope="page" type="com.dementevay.voting.model.Meal"/>
+                    ${meal.description} : ${meal.price} <br>
+                </c:forEach>
+            </td>
+            <td>
+                <form method="post">
+                    <button name="vote_btn" value="${restaurant.id}">Выбрать</button>
+                </form>
+            </td>
             <td>
                 <form method="post">
                     <button name="edit_btn" value="${restaurant.id}">Edit</button>
                 </form>
             </td>
             <td>
-                <form method="post">
-                    <button name="delete_btn" value="${restaurant.id}">Delete</button>
-                </form>
+                <a href="meals/delete?id=${restaurant.id}">Delete</a>
             </td>
         </tr>
     </c:forEach>
