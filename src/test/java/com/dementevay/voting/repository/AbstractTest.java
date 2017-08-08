@@ -1,6 +1,7 @@
 package com.dementevay.voting.repository;
 
-import com.dementevay.voting.web.RestaurantRestController;
+import com.dementevay.voting.repository.meal.MealRepository;
+import com.dementevay.voting.web.restaurant.RestaurantRestController;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;

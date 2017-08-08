@@ -1,20 +1,14 @@
 package com.dementevay.voting.web.user;
 
-import com.dementevay.voting.model.Restaurant;
-import com.dementevay.voting.repository.RestaurantRepositoryImpl;
-import com.dementevay.voting.service.RestaurantService;
-import com.dementevay.voting.service.RestaurantServiceImpl;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import com.dementevay.voting.repository.restaurant.RestaurantRepositoryImpl;
+import com.dementevay.voting.service.restaurants.RestaurantService;
+import com.dementevay.voting.service.restaurants.RestaurantServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
 /**
  * Created by Andrey Dementev on 24.07.17.

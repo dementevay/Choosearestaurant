@@ -1,7 +1,7 @@
-package com.dementevay.voting.web;
+package com.dementevay.voting.web.restaurant;
 
-import com.dementevay.voting.service.MealService;
-import com.dementevay.voting.service.RestaurantService;
+import com.dementevay.voting.service.meal.MealService;
+import com.dementevay.voting.service.restaurants.RestaurantService;
 import com.dementevay.voting.to.RestaurantWithMenu;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -48,9 +48,13 @@ public class RestaurantRestController extends RestaurantAbstractController {
         return super.getAllByDate(dateTime);
     }
 
-    @Override
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void save(@RequestBody RestaurantWithMenu restaurant) {
+    public void create(@RequestBody RestaurantWithMenu restaurant) {
+        super.save(restaurant);
+    }
+
+    @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void update(@RequestBody RestaurantWithMenu restaurant) {
         super.save(restaurant);
     }
 

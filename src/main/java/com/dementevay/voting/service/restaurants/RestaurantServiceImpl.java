@@ -1,7 +1,7 @@
-package com.dementevay.voting.service;
+package com.dementevay.voting.service.restaurants;
 
 import com.dementevay.voting.model.Restaurant;
-import com.dementevay.voting.repository.RestaurantRepository;
+import com.dementevay.voting.repository.restaurant.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

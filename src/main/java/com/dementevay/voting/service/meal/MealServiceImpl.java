@@ -1,8 +1,7 @@
-package com.dementevay.voting.service;
+package com.dementevay.voting.service.meal;
 
 import com.dementevay.voting.model.Meal;
-import com.dementevay.voting.repository.MealRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.dementevay.voting.repository.meal.MealRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;

@@ -1,12 +1,10 @@
-package com.dementevay.voting.web;
+package com.dementevay.voting.web.restaurant;
 
 import com.dementevay.voting.AuthorizedUser;
-import com.dementevay.voting.model.Meal;
 import com.dementevay.voting.model.Restaurant;
-import com.dementevay.voting.service.MealService;
-import com.dementevay.voting.service.RestaurantService;
+import com.dementevay.voting.service.meal.MealService;
+import com.dementevay.voting.service.restaurants.RestaurantService;
 import com.dementevay.voting.to.RestaurantWithMenu;
-import com.dementevay.voting.util.TimeUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -54,7 +52,6 @@ public abstract class RestaurantAbstractController {
                 , serviceMeal.getForRestaurantByDay(id, dateTime));
     }
 
-    //public void create(Restaurant restaurant, List<Meal> menu) {
     public void save(RestaurantWithMenu restaurant) {
         LOG.info("create/update Restaurant {}", restaurant.getName());
         int userId = AuthorizedUser.id();

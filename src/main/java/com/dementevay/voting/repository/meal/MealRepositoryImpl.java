@@ -1,7 +1,6 @@
-package com.dementevay.voting.repository;
+package com.dementevay.voting.repository.meal;
 
 import com.dementevay.voting.model.Meal;
-import com.dementevay.voting.model.Restaurant;
 import com.dementevay.voting.model.Role;
 import com.dementevay.voting.model.User;
 import org.springframework.stereotype.Repository;

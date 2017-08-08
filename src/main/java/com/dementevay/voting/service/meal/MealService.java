@@ -1,4 +1,4 @@
-package com.dementevay.voting.service;
+package com.dementevay.voting.service.meal;
 
 import com.dementevay.voting.model.Meal;
 

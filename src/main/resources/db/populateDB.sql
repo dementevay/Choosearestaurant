@@ -1,6 +1,6 @@
 DELETE FROM user_roles;
 DELETE FROM meals;
-DELETE FROM vote;
+DELETE FROM votes;
 DELETE FROM restaurants;
 DELETE FROM users;
 ALTER SEQUENCE global_seq RESTART WITH 100000;
@@ -43,7 +43,7 @@ INSERT INTO meals (restaurant_id, date_time, description, price) VALUES
   ('100006','2017-07-26 10:00:00', 'Морс', 800),
   ('100006','2017-07-26 10:00:00', 'Хлеб', 250);
 
-INSERT INTO vote (date_time, user_id, restaurant_id) VALUES
-  ('2017-07-26 10:00:00', 100000, 100006),
-  ('2017-07-26 10:00:00', 100001, 100004),
-  ('2017-07-26 10:00:00', 100002, 100006);
+INSERT INTO votes (date, user_id, restaurant_id) VALUES
+  ('2017-07-26', 100000, 100006),
+  ('2017-07-26', 100001, 100004),
+  ('2017-07-26', 100002, 100006);

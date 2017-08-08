@@ -1,17 +1,11 @@
 package com.dementevay.voting.web.restaurant;
 
-import com.dementevay.voting.service.RestaurantService;
+import com.dementevay.voting.service.restaurants.RestaurantService;
 import com.dementevay.voting.web.AbstractControllerTest;
-import com.dementevay.voting.web.RestaurantRestController;
-import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 
-import static org.junit.Assert.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
  * Created by Andrey Dementev on 01.08.17.

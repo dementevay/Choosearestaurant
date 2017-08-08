@@ -1,4 +1,4 @@
-package com.dementevay.voting.repository;
+package com.dementevay.voting.repository.restaurant;
 
 import com.dementevay.voting.model.Restaurant;
 import com.dementevay.voting.model.Role;
