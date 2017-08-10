@@ -7,6 +7,7 @@ import java.util.Map;
  * Created by Andrey Dementev on 08.08.17.
  */
 public class AuthenticatedUser {
+    private AuthenticatedUser(){}
     private static Map<Integer, String> map = new HashMap<>();
     static {
         map.put(100000, "Админ");

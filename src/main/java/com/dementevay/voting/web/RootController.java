@@ -108,8 +108,8 @@ public class RootController extends RestaurantAbstractController {
         Restaurant restaurant = new Restaurant(id, name);
         id = super.serviceRestaurant.save(restaurant, AuthorizedUser.id());
 
-        model.addAttribute("restaurant", super.get(id));
-        return "restaurant";
+        model.addAttribute("id", id);
+        return "redirect:/editRestaurant";
     }
 
     @PostMapping("/editMeal")
@@ -129,8 +129,8 @@ public class RootController extends RestaurantAbstractController {
             }
         }
 
-        model.addAttribute("restaurant", super.get(restaurant_id));
-        return "restaurant";
+        model.addAttribute("id", restaurant_id);
+        return "redirect:/editRestaurant";
     }
 
     @GetMapping("newMeal")

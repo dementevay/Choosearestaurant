@@ -11,6 +11,7 @@ import java.time.format.DateTimeFormatter;
  * Created by Andrey Dementev on 27.07.17.
  */
 public class TimeUtil {
+    private TimeUtil(){}
     private final static DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
     private final static DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     //private final static DateTimeFormatter DATE_T_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-ddTHH:mm:ss");
