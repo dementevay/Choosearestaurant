@@ -44,5 +44,11 @@ public class RestaurantWithMenu implements HasId{
         return menu;
     }
 
+    public String getStringMenu () {
+        StringBuilder str = new StringBuilder();
+        getMenu().forEach(m -> str.append(m.toString() + ";"));
+        return str.toString();
+    }
+
 }
 

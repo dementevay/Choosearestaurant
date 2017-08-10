@@ -33,6 +33,9 @@ public class RestaurantServiceImpl implements RestaurantService {
 
     @Override
     public int save(Restaurant restaurant, int userId) {
+        if (restaurant.getId() == 0) {
+            restaurant.setId(null);
+        }
         repository.save(restaurant, userId);
         return restaurant.getId();
     }

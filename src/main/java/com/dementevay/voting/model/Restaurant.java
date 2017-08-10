@@ -1,7 +1,6 @@
 package com.dementevay.voting.model;
 
 import javax.persistence.*;
-import java.util.List;
 
 /**
  * Created by Andrey Dementev on 24.07.17.
@@ -23,6 +22,7 @@ public class Restaurant extends NamedEntity {
     public static final String DELETE_ALL = "Restaurant.delete_all";
 
     public Restaurant(){}
+//    public Restaurant(int id, String name){}
 
     public Restaurant(Restaurant re){
         this(re.getId(), re.getName());

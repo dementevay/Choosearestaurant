@@ -1,5 +1,6 @@
 package com.dementevay.voting.repository.vote;
 
+import com.dementevay.voting.DateTimeForTests;
 import com.dementevay.voting.model.Role;
 import com.dementevay.voting.model.User;
 import com.dementevay.voting.model.Vote;
@@ -28,8 +29,21 @@ public class VoteRepositoryImpl implements VoteRepository {
         return votes;
     }
 
+    @Override
     public Vote getById(int id) {
         return em.createNamedQuery(Vote.GET_BY_ID, Vote.class).setParameter("id", id).getSingleResult();
+    }
+
+    @Override
+    public Vote getByUserId(int user_id){
+        Vote vote;
+        try{
+            vote = em.createNamedQuery(Vote.GET_BY_USER_ID, Vote.class)
+                    .setParameter("user_id", user_id).getSingleResult();
+        } catch (Exception e) {
+            vote = new Vote(0, DateTimeForTests.localDate, user_id, 0);
+        }
+        return vote;
     }
 
     @Override
@@ -40,7 +54,7 @@ public class VoteRepositoryImpl implements VoteRepository {
     @Override
     @Transactional
     public void save(Vote vote, int userId){
-        if (isAdmin(userId)) {
+//        if (isAdmin(userId)) {
             int id = isExist(userId, vote.getDate());
             if (id != 0) {
                 vote.setId(id);
@@ -48,7 +62,7 @@ public class VoteRepositoryImpl implements VoteRepository {
             } else {
                 em.persist(vote);
             }
-        }
+//        }
     }
 
     private boolean isAdmin (int userId) {

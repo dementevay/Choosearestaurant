@@ -5,12 +5,9 @@ import com.dementevay.voting.model.Vote;
 import com.dementevay.voting.repository.vote.VoteRepository;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * Created by Andrey Dementev on 03.08.17.
@@ -29,8 +26,14 @@ public class VoteServiceImpl implements VoteService {
         return repository.getAllByDate(localDate);
     }
 
+    @Override
     public Vote getById(int id) {
         return repository.getById(id);
+    }
+
+    @Override
+    public Vote getByUserId(int user_id){
+        return repository.getByUserId(user_id);
     }
 
     @Override

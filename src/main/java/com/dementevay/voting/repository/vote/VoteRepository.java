@@ -16,5 +16,7 @@ public interface VoteRepository {
 
     Vote getById(int id);
 
+    Vote getByUserId(int id);
+
     void save(Vote vote, int userId);
 }

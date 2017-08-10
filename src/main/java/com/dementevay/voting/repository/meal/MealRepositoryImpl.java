@@ -31,7 +31,7 @@ public class MealRepositoryImpl implements MealRepository {
     public List<Meal> getForRestaurantByDay(int restaurant_id, LocalDateTime dateTime) {
         return em.createNamedQuery(Meal.GET_FOR_RESTAURANT_BY_DAY, Meal.class)
                 .setParameter("id", restaurant_id)
-                .setParameter("dt", dateTime)
+                .setParameter("dt", dateTime.toLocalDate())
                 .getResultList();
     }
 
@@ -45,9 +45,9 @@ public class MealRepositoryImpl implements MealRepository {
     @Override
     @Transactional
     public void delete(int id, int userId) {
-        /*if (isAdmin(userId)) {
-            em.createNamedQuery(Meal.DELETE, Restaurant.class).setParameter("id", id);
-        }*/
+        if (isAdmin(userId)) {
+            em.createNamedQuery(Meal.DELETE).setParameter("id", id).executeUpdate();
+        }
     }
 
     @Override

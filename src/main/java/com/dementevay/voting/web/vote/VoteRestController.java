@@ -1,6 +1,7 @@
 package com.dementevay.voting.web.vote;
 
 import com.dementevay.voting.model.Vote;
+import com.dementevay.voting.service.restaurants.RestaurantService;
 import com.dementevay.voting.service.vote.VoteService;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.MediaType;
@@ -18,8 +19,8 @@ import java.util.List;
 public class VoteRestController extends AbstractVoteController{
     public static final String REST_URL = "/rest/votes";
 
-    public VoteRestController(VoteService service) {
-        super(service);
+    public VoteRestController(VoteService service, RestaurantService restaurantService) {
+        super(service, restaurantService);
     }
 
     @GetMapping(value = "/")

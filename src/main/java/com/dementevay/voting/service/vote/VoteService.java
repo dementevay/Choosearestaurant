@@ -3,7 +3,6 @@ package com.dementevay.voting.service.vote;
 import com.dementevay.voting.model.Vote;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -16,6 +15,8 @@ public interface VoteService {
     List<Vote> getAllByDate(LocalDate localDate);
 
     Vote getById(int id);
+
+    Vote getByUserId(int user_id);
 
     int getWinnerOnDay(LocalDate localDate);
 

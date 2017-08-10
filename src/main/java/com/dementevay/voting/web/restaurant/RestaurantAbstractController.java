@@ -17,9 +17,9 @@ import java.util.stream.Collectors;
  * Created by Andrey Dementev on 25.07.17.
  */
 public abstract class RestaurantAbstractController {
-    private final Logger LOG = LoggerFactory.getLogger(getClass());
+    protected final Logger LOG = LoggerFactory.getLogger(getClass());
 
-    private final RestaurantService serviceRestaurant;
+    protected final RestaurantService serviceRestaurant;
     protected final MealService serviceMeal;
 
     public RestaurantAbstractController(RestaurantService restaurantService, MealService serviceMeal) {

@@ -1,15 +1,12 @@
 package com.dementevay.voting.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 /**
  * Created by Andrey Dementev on 24.07.17.
@@ -17,10 +14,11 @@ import java.time.LocalDateTime;
 @SuppressWarnings("JpaQlInspection")
 
 @NamedQueries({
-        @NamedQuery(name = Meal.GET_ALL, query = "SELECT m FROM Meal m"),
+        @NamedQuery(name = Meal.GET_ALL, query = "SELECT m FROM Meal m ORDER BY m.id"),
         @NamedQuery(name = Meal.GET, query = "SELECT m FROM Meal m WHERE m.id = :id"),
-        @NamedQuery(name = Meal.GET_FOR_RESTAURANT, query = "SELECT m FROM Meal m WHERE m.restaurant_id = :id"),
-        @NamedQuery(name = Meal.GET_FOR_RESTAURANT_BY_DAY, query = "SELECT m FROM Meal m WHERE m.restaurant_id = :id and m.dateTime = :dt")
+        @NamedQuery(name = Meal.DELETE, query = "DELETE FROM Meal m WHERE m.id = :id"),
+        @NamedQuery(name = Meal.GET_FOR_RESTAURANT, query = "SELECT m FROM Meal m WHERE m.restaurant_id = :id ORDER BY m.id"),
+        @NamedQuery(name = Meal.GET_FOR_RESTAURANT_BY_DAY, query = "SELECT m FROM Meal m WHERE m.restaurant_id = :id and m.dateTime = :dt ORDER BY m.id")
 })
 
 @Entity
@@ -43,8 +41,8 @@ public class Meal extends BaseEntity {
 
     @Column(name = "date_time", nullable = false)
     @NotNull
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
-    private LocalDateTime dateTime;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private LocalDate dateTime;
 
     @Column(name = "price", nullable = false)
     @Range(min = 0, max = 10000000)
@@ -58,7 +56,7 @@ public class Meal extends BaseEntity {
 
     public Meal() {
     }
-    public Meal(Integer id, Integer restaurant_id, String description, int price, LocalDateTime dateTime) {
+    public Meal(Integer id, Integer restaurant_id, String description, int price, LocalDate dateTime) {
         super(id);
         this.restaurant_id = restaurant_id;
         this.description = description;
@@ -68,16 +66,16 @@ public class Meal extends BaseEntity {
     public Meal(Meal m) {
         this(m.getId(), m.getRestaurant_id(), m.getDescription(), m.getPrice(), m.getDateTime());
     }
-    public Meal(Integer restaurant_id, String description, int price, LocalDateTime dateTime) {
+    public Meal(Integer restaurant_id, String description, int price, LocalDate dateTime) {
         this(null, restaurant_id, description, price, dateTime);
     }
 
 
-    public LocalDateTime getDateTime() {
+    public LocalDate getDateTime() {
         return dateTime;
     }
 
-    public void setDateTime(LocalDateTime dateTime) {
+    public void setDateTime(LocalDate dateTime) {
         this.dateTime = dateTime;
     }
 
@@ -88,14 +86,6 @@ public class Meal extends BaseEntity {
     public void setPrice(int price) {
         this.price = price;
     }
-
-    /*public Restaurant getRestaurant() {
-        return restaurant;
-    }
-
-    public void setRestaurant(Restaurant restaurant) {
-        this.restaurant = restaurant;
-    }*/
 
     public int getRestaurant_id() {
         return restaurant_id;
@@ -111,5 +101,14 @@ public class Meal extends BaseEntity {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return this.getId().toString() + " " +
+                this.restaurant_id + " " +
+                this.getDateTime().toString() + " " +
+                this.getDescription() + " " +
+                this.getPrice();
     }
 }

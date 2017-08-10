@@ -11,6 +11,7 @@ import java.time.LocalDate;
 @NamedQueries({
         @NamedQuery(name = Vote.GET_ALL_BY_DAY, query = "SELECT v FROM Vote v WHERE v.date = :date"),
         @NamedQuery(name = Vote.GET_BY_ID, query = "SELECT v FROM Vote v WHERE v.id = :id"),
+        @NamedQuery(name = Vote.GET_BY_USER_ID, query = "SELECT v FROM Vote v WHERE v.user_id = :user_id"),
         @NamedQuery(name = Vote.GET_ALL, query = "SELECT v FROM Vote v"),
         @NamedQuery(name = Vote.SAVE, query = "SELECT v FROM Vote v WHERE v.id = :id"),
         @NamedQuery(name = Vote.IS_EXIST, query = "SELECT v FROM Vote v WHERE v.user_id = :userId AND v.date = :date")
@@ -21,6 +22,7 @@ import java.time.LocalDate;
 public class Vote extends BaseEntity{
     public static final String GET_ALL_BY_DAY = "Vote.getAllByDay";
     public static final String GET_BY_ID = "Vote.getById";
+    public static final String GET_BY_USER_ID = "Vote.getByUserId";
     public static final String GET_ALL = "Vote.getAll";
     public static final String SAVE = "Vote.save";
     public static final String IS_EXIST = "Vote.isExist";
