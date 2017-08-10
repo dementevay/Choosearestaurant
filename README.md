@@ -1,0 +1,2 @@
+# Choosearestaurant
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/4b796156bb2c41b3a72548dabed83a43)](https://www.codacy.com/app/dementevay/Choosearestaurant?utm_source=github.com&utm_medium=referral&utm_content=dementevay/Choosearestaurant&utm_campaign=badger)
