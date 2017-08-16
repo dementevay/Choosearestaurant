@@ -25,7 +25,7 @@ public class User extends NamedEntity {
     public static final String GET_USER_ROLE = "User.ROLES";
 
     @Enumerated(EnumType.STRING)
-    @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"))
+    @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "userId"))
     @Column(name = "role")
     @ElementCollection(fetch = FetchType.EAGER)
 //    @Fetch(FetchMode.SUBSELECT)

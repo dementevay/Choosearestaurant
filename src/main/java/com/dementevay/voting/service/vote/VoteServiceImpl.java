@@ -32,8 +32,8 @@ public class VoteServiceImpl implements VoteService {
     }
 
     @Override
-    public Vote getByUserId(int user_id){
-        return repository.getByUserId(user_id);
+    public Vote getByUserId(int userId){
+        return repository.getByUserId(userId);
     }
 
     @Override
@@ -45,7 +45,7 @@ public class VoteServiceImpl implements VoteService {
     public int getWinnerOnDay(LocalDate localDate) {
         List<Vote> votes = repository.getAllByDate(localDate);
         Map<Integer, Integer> map = new HashMap<>();
-        votes.forEach(v -> map.merge(v.getRestaurant_id(), 1, (k, v1) -> v1+1));
+        votes.forEach(v -> map.merge(v.getRestaurantId(), 1, (k, v1) -> v1+1));
         int i = 0;
         int idWinner = 0;
         for (Map.Entry<Integer, Integer> m : map.entrySet()) {

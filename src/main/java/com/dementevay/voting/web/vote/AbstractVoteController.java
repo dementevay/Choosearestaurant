@@ -57,7 +57,7 @@ public class AbstractVoteController {
     }
 
     public void save(Vote vote){
-        LOG.info("save Vote {}", vote.getUser_id());
+        LOG.info("save Vote {}", vote.getUserId());
         int userId = AuthorizedUser.id();
         service.save(vote, userId);
     }

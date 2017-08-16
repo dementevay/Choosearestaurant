@@ -15,9 +15,9 @@ public class MealRepositoryImplTest extends AbstractTest{
 
     @Test
     public void getForRestaurantByDay() throws Exception {
-        List<Meal> meals = mealRepository.getForRestaurantByDay(100005, TimeUtil.stringToLocalDateTime("2017-07-26 10:00:00"));
+        List<Meal> meals = mealRepository.getForRestaurantByDay(100005, TimeUtil.stringToLocalDateTime("2017-07-26 10:00:00").toLocalDate());
         List<Meal> m = meals;
-//        assertArrayEquals();
+        assertFalse(meals != null);
     }
 
 }

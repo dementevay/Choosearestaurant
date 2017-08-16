@@ -11,10 +11,10 @@ import java.time.LocalDate;
 @NamedQueries({
         @NamedQuery(name = Vote.GET_ALL_BY_DAY, query = "SELECT v FROM Vote v WHERE v.date = :date"),
         @NamedQuery(name = Vote.GET_BY_ID, query = "SELECT v FROM Vote v WHERE v.id = :id"),
-        @NamedQuery(name = Vote.GET_BY_USER_ID, query = "SELECT v FROM Vote v WHERE v.user_id = :user_id"),
+        @NamedQuery(name = Vote.GET_BY_USER_ID, query = "SELECT v FROM Vote v WHERE v.userId = :userId"),
         @NamedQuery(name = Vote.GET_ALL, query = "SELECT v FROM Vote v"),
         @NamedQuery(name = Vote.SAVE, query = "SELECT v FROM Vote v WHERE v.id = :id"),
-        @NamedQuery(name = Vote.IS_EXIST, query = "SELECT v FROM Vote v WHERE v.user_id = :userId AND v.date = :date")
+        @NamedQuery(name = Vote.IS_EXIST, query = "SELECT v FROM Vote v WHERE v.userId = :userId AND v.date = :date")
 })
 
 @Entity
@@ -32,12 +32,12 @@ public class Vote extends BaseEntity{
     private LocalDate date;
 
     @CollectionTable(name = "users", joinColumns = @JoinColumn(name = "id"))
-    @JoinColumn(name = "user_id", nullable = false)
-    private int user_id;
+    @JoinColumn(name = "userId", nullable = false)
+    private int userId;
 
     @CollectionTable(name = "restaurants", joinColumns = @JoinColumn(name = "id"))
-    @JoinColumn(name = "restaurant_id", nullable = false)
-    private int restaurant_id;
+    @JoinColumn(name = "restaurantId", nullable = false)
+    private int restaurantId;
 
     public Vote() {
     }
@@ -45,25 +45,25 @@ public class Vote extends BaseEntity{
     public Vote(Integer id, LocalDate date, int userId, int restaurantId){
         super(id);
         this.date = date;
-        this.user_id = userId;
-        this.restaurant_id = restaurantId;
+        this.userId = userId;
+        this.restaurantId = restaurantId;
     }
 
     public Vote(Vote vote){
-        this(vote.getId(), vote.getDate(), vote.getUser_id(), vote.getRestaurant_id());
+        this(vote.getId(), vote.getDate(), vote.getUserId(), vote.getRestaurantId());
     }
 
-    public Vote(LocalDate date, int user_id, int restaurant_id){
-        this(null, date, user_id, restaurant_id);
+    public Vote(LocalDate date, int userId, int restaurantId){
+        this(null, date, userId, restaurantId);
 
     }
 
-    public int getUser_id() {
-        return user_id;
+    public int getUserId() {
+        return userId;
     }
 
-    public int getRestaurant_id() {
-        return restaurant_id;
+    public int getRestaurantId() {
+        return restaurantId;
     }
 
     public LocalDate getDate() {
@@ -74,12 +74,12 @@ public class Vote extends BaseEntity{
         this.date = date;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    public void setRestaurant_id(int restaurant_id) {
-        this.restaurant_id = restaurant_id;
+    public void setRestaurantId(int restaurantId) {
+        this.restaurantId = restaurantId;
     }
 
 

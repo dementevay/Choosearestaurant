@@ -9,11 +9,11 @@
 <section>
     <jsp:useBean id="meal" type="com.dementevay.voting.model.Meal" scope="request"/>
     <form method="post" action="editMeal">
-        <input type="hidden" value="${meal.id}" name="id">
-        <input type="hidden" value="${meal.restaurant_id}" name="restaurant_id">
-        <input type="hidden" value="${meal.dateTime}" name="dateTime">
-        <input value="${meal.description}" name="description"> :
-        <input type="number" value="${meal.price}" name="price">
+        <input type="hidden" value="<c:out value="${meal.id}"/>" name="id">
+        <input type="hidden" value="<c:out value="${meal.restaurantId}"/>" name="restaurantId">
+        <input type="hidden" value="<c:out value="${meal.date}"/>" name="dateTime">
+        <input type="text" value="<c:out value="${meal.description}"/>" name="description"> :
+        <input type="number" value="<c:out value="${meal.price}"/>" name="price">
         <button>Сохранить</button>
     </form>
 </section>

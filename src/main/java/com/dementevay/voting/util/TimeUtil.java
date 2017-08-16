@@ -11,13 +11,10 @@ import java.time.format.DateTimeFormatter;
  * Created by Andrey Dementev on 27.07.17.
  */
 public class TimeUtil {
-    private TimeUtil(){}
     private final static DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
     private final static DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-    //private final static DateTimeFormatter DATE_T_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-ddTHH:mm:ss");
 
-    //public static final LocalDate MIN_DATE = LocalDate.of(1, 1, 1);
-    //public static final LocalDate MAX_DATE = LocalDate.of(3000, 1, 1);
+    private TimeUtil(){}
 
     public static boolean isBetween(LocalTime lt, LocalTime startTime, LocalTime endTime) {
         return lt.compareTo(startTime) >= 0 && lt.compareTo(endTime) <= 0;

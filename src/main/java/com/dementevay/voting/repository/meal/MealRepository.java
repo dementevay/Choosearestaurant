@@ -2,7 +2,7 @@ package com.dementevay.voting.repository.meal;
 
 import com.dementevay.voting.model.Meal;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -12,7 +12,7 @@ public interface MealRepository {
 
     public Meal get(int id);
 
-    public List<Meal> getForRestaurantByDay(int restaurant_id, LocalDateTime dateTime);
+    public List<Meal> getForRestaurantByDay(int restaurant_id, LocalDate localDate);
 
     public List<Meal> getForRestaurant(int restaurant_id);
 
@@ -23,7 +23,5 @@ public interface MealRepository {
     void save(Meal meal, int user_id);
 
     public Meal create(String name, String menu, int user_id) ;
-
-    public void update(int id, String name, String menu, int user_id) ;
 
 }

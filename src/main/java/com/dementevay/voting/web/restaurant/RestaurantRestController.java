@@ -3,9 +3,11 @@ package com.dementevay.voting.web.restaurant;
 import com.dementevay.voting.service.meal.MealService;
 import com.dementevay.voting.service.restaurants.RestaurantService;
 import com.dementevay.voting.to.RestaurantWithMenu;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -32,8 +34,9 @@ public class RestaurantRestController extends RestaurantAbstractController {
     @GetMapping(value = "/{id}/{date}")
     public RestaurantWithMenu getForDate(
             @PathVariable("id") int id,
-            @PathVariable(value = "date", required = false) LocalDateTime dateTime) {
-        return super.getForDate(id, dateTime);
+//            @PathVariable(value = "date", required = false) LocalDateTime localDate) {
+            @PathVariable(value = "date", required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate localDate){
+        return super.getForDate(id, localDate);
     }
 
     @Override
@@ -42,10 +45,11 @@ public class RestaurantRestController extends RestaurantAbstractController {
         return super.getAll();
     }
 
-    @Override//   /{"2017-07-26T10:00:00"}
+    @Override//   2017-07-26
     @GetMapping(value = "/date/{date}")
-    public List<RestaurantWithMenu> getAllByDate(@PathVariable("date") LocalDateTime dateTime) {
-        return super.getAllByDate(dateTime);
+    public List<RestaurantWithMenu> getAllByDate(
+            @PathVariable("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate localDate) {
+        return super.getAllByDate(localDate);
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)

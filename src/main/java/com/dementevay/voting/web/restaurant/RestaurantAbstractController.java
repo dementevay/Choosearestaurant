@@ -8,7 +8,7 @@ import com.dementevay.voting.to.RestaurantWithMenu;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -34,10 +34,10 @@ public abstract class RestaurantAbstractController {
                 .collect(Collectors.toList());
     }
 
-    public List<RestaurantWithMenu> getAllByDate(LocalDateTime dateTime) {
-        LOG.info("get all Restaurant by date {}", dateTime);
+    public List<RestaurantWithMenu> getAllByDate(LocalDate localDate) {
+        LOG.info("get all Restaurant by date {}", localDate);
         return serviceRestaurant.getAll().stream()
-                .map(r -> new RestaurantWithMenu(r, serviceMeal.getForRestaurantByDay(r.getId(), dateTime)))
+                .map(r -> new RestaurantWithMenu(r, serviceMeal.getForRestaurantByDay(r.getId(), localDate)))
                 .collect(Collectors.toList());
     }
 
@@ -46,10 +46,10 @@ public abstract class RestaurantAbstractController {
         return new RestaurantWithMenu(serviceRestaurant.get(id), serviceMeal.getForRestaurant(id));
     }
 
-    public RestaurantWithMenu getForDate(int id, LocalDateTime dateTime) {
-        LOG.info("get Restaurant {} for Date {}", id, dateTime);
+    public RestaurantWithMenu getForDate(int id, LocalDate localDate) {
+        LOG.info("get Restaurant {} for Date {}", id, localDate);
         return new RestaurantWithMenu(serviceRestaurant.get(id)
-                , serviceMeal.getForRestaurantByDay(id, dateTime));
+                , serviceMeal.getForRestaurantByDay(id, localDate));
     }
 
     public void save(RestaurantWithMenu restaurant) {
@@ -57,13 +57,13 @@ public abstract class RestaurantAbstractController {
         int userId = AuthorizedUser.id();
 
         Restaurant rest = new Restaurant(
-                restaurant.isNew() ? null : restaurant.getId(),
+                restaurant.isNew() ? 0 : restaurant.getId(),
                 restaurant.getName());
         final int id = serviceRestaurant.save(rest, userId);
 
         restaurant.getMenu().forEach(m ->
         {
-            m.setRestaurant_id(id);
+            m.setRestaurantId(id);
             serviceMeal.save(m, userId);
         });
     }

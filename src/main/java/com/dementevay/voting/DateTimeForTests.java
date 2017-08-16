@@ -10,12 +10,12 @@ import java.time.LocalTime;
  * Created by Andrey Dementev on 07.08.17.
  */
 public class DateTimeForTests {
-    private DateTimeForTests(){}
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     public static LocalDateTime localDateTime = LocalDateTime.parse("2017-07-26T10:00:00");
     public static LocalDate localDate = localDateTime.toLocalDate();
     public static LocalTime localTime = localDateTime.toLocalTime();
 
+    private DateTimeForTests(){}
 
     public static void setDateTime(LocalDateTime localDateTime) {
         DateTimeForTests.localDateTime = localDateTime;

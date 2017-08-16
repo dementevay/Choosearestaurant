@@ -22,7 +22,6 @@ public class Restaurant extends NamedEntity {
     public static final String DELETE_ALL = "Restaurant.delete_all";
 
     public Restaurant(){}
-//    public Restaurant(int id, String name){}
 
     public Restaurant(Restaurant re){
         this(re.getId(), re.getName());

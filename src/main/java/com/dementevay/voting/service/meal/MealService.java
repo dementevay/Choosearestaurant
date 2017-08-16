@@ -2,6 +2,7 @@ package com.dementevay.voting.service.meal;
 
 import com.dementevay.voting.model.Meal;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -12,7 +13,7 @@ public interface MealService {
 
     Meal get(int id);
 
-    List<Meal> getForRestaurantByDay(int restaurant_id, LocalDateTime dateTime);
+    List<Meal> getForRestaurantByDay(int restaurant_id, LocalDate localDate);
 
     List<Meal> getForRestaurant(int restaurant_id);
 
@@ -23,6 +24,4 @@ public interface MealService {
     void save(Meal meal, int user_id);
 
     Meal create(String name, String menu, int user_id);
-
-    void update(int id, String name, String menu, int user_id);
 }

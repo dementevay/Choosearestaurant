@@ -11,11 +11,11 @@
     <jsp:useBean id="restaurant" type="com.dementevay.voting.to.RestaurantWithMenu" scope="request"/>
     <hr>
     <form method="post" action="saveRestaurant">
-        <input type="hidden" name="id" value="${restaurant.id}">
+        <input type="hidden" name="id" value="<c:out value="${restaurant.id}"/>">
         <dl>
             <dt>Ресторан</dt>
             <dd>
-                <input value="${restaurant.name}" name="name">
+                <input value="<c:out value="${restaurant.name}"/>" name="name">
                 <button>Применить</button>
             </dd>
         </dl>
@@ -27,18 +27,18 @@
             <c:forEach items="${restaurant.menu}" var="meal" varStatus="status">
                 <jsp:useBean id="meal" type="com.dementevay.voting.model.Meal"/>
                 <form method="post" action="editMeal">
-                    <input type="hidden" value="${meal.id}" name="id">
-                    <input type="hidden" value="${meal.restaurant_id}" name="restaurant_id">
-                    <input type="hidden" value="${meal.dateTime}" name="dateTime">
-                    <input value="${meal.description}" name="description"> :
-                    <input type="number" value="${meal.price}" name="price">
+                    <input type="hidden" value="<c:out value="${meal.id}"/>" name="id">
+                    <input type="hidden" value="<c:out value="${meal.restaurantId}"/>" name="restaurantId">
+                    <input type="hidden" value="<c:out value="${meal.date}"/>" name="dateTime">
+                    <input value="<c:out value="${meal.description}"/>" name="description"> :
+                    <input type="number" value="<c:out value="${meal.price}"/>" name="price">
                     <button>Применить</button>
-                    <a href="delete_meal?id=${meal.id}&restaurant_id=${meal.restaurant_id}">Удалить</a>
+                    <a href="delete_meal?id=<c:out value="${meal.id}"/>&restaurantId=<c:out value="${meal.restaurantId}"/>">Удалить</a>
                 </form>
             </c:forEach>
         </dd>
     </dl>
-    <a href="newMeal?restaurant_id=${restaurant.id}">Добавить блюдо</a>
+    <a href="newMeal?restaurantId=<c:out value="${restaurant.id}"/>">Добавить блюдо</a>
 
 </section>
 

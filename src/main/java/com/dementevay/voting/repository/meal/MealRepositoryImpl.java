@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -28,17 +28,17 @@ public class MealRepositoryImpl implements MealRepository {
     }
 
     @Override
-    public List<Meal> getForRestaurantByDay(int restaurant_id, LocalDateTime dateTime) {
+    public List<Meal> getForRestaurantByDay(int restaurantId, LocalDate localDate) {
         return em.createNamedQuery(Meal.GET_FOR_RESTAURANT_BY_DAY, Meal.class)
-                .setParameter("id", restaurant_id)
-                .setParameter("dt", dateTime.toLocalDate())
+                .setParameter("id", restaurantId)
+                .setParameter("dt", localDate)
                 .getResultList();
     }
 
     @Override
-    public List<Meal> getForRestaurant(int restaurant_id) {
+    public List<Meal> getForRestaurant(int restaurantId) {
         return em.createNamedQuery(Meal.GET_FOR_RESTAURANT, Meal.class)
-                .setParameter("id", restaurant_id)
+                .setParameter("id", restaurantId)
                 .getResultList();
     }
 
@@ -71,12 +71,6 @@ public class MealRepositoryImpl implements MealRepository {
     @Transactional
     public Meal create(String name, String menu, int userId) {
         return null;
-    }
-
-    @Override
-    @Transactional
-    public void update(int id, String name, String menu, int userId) {
-
     }
 
     private boolean isAdmin (int userId) {

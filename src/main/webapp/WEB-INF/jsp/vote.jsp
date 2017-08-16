@@ -58,23 +58,23 @@
 
     <c:forEach items="${restaurants_list}" var="restaurant" varStatus="status">
         <jsp:useBean id="restaurant" type="com.dementevay.voting.to.RestaurantWithMenu"/>
-        <tr class="${user_vote.restaurant_id == restaurant.id ? 'active_vote':'normal'}">
-            <td>${restaurant.id}</td>
-            <td>${restaurant.name}</td>
+        <tr class="${user_vote.restaurantId == restaurant.id ? 'active_vote':'normal'}">
+            <td><c:out value="${restaurant.id}"/></td>
+            <td><c:out value="${restaurant.name}"/></td>
             <td>
                 <c:forEach items="${restaurant.menu}" var="meal" varStatus="status">
                     <jsp:useBean id="meal" type="com.dementevay.voting.model.Meal"/>
-                    ${meal.description} : ${meal.price} <br>
+                    <c:out value="${meal.description}"/> : <c:out value="${meal.price}"/> <br>
                 </c:forEach>
             </td>
             <td>
-                <a href="vote?restaurant_id=${restaurant.id}">Выбрать</a>
+                <a href="vote?restaurantId=<c:out value="${restaurant.id}"/>">Выбрать</a>
             </td>
             <td>
-                <a href="editRestaurant?id=${restaurant.id}">Edit</a>
+                <a href="editRestaurant?id=<c:out value="${restaurant.id}"/>">Edit</a>
             </td>
             <td>
-                <a href="delete?id=${restaurant.id}">Delete</a>
+                <a href="delete?id=<c:out value="${restaurant.id}"/>">Delete</a>
             </td>
         </tr>
     </c:forEach>

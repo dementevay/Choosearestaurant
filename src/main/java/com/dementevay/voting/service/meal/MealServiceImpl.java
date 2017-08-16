@@ -4,6 +4,7 @@ import com.dementevay.voting.model.Meal;
 import com.dementevay.voting.repository.meal.MealRepository;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -25,13 +26,13 @@ public class MealServiceImpl implements MealService{
     }
 
     @Override
-    public List<Meal> getForRestaurantByDay(int restaurant_id, LocalDateTime dateTime) {
-        return repository.getForRestaurantByDay(restaurant_id, dateTime);
+    public List<Meal> getForRestaurantByDay(int restaurantId, LocalDate localDate) {
+        return repository.getForRestaurantByDay(restaurantId, localDate);
     }
 
     @Override
-    public List<Meal> getForRestaurant(int restaurant_id) {
-        return repository.getForRestaurant(restaurant_id);
+    public List<Meal> getForRestaurant(int restaurantId) {
+        return repository.getForRestaurant(restaurantId);
     }
 
     @Override
@@ -54,8 +55,4 @@ public class MealServiceImpl implements MealService{
         return null;
     }
 
-    @Override
-    public void update(int id, String name, String menu, int userId) {
-
-    }
 }

@@ -20,9 +20,9 @@ CREATE TABLE users
 CREATE TABLE user_roles
 (
   role    VARCHAR,
-  user_id INTEGER NOT NULL,
-  CONSTRAINT user_roles_idx UNIQUE (user_id, role),
-  FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
+  userId INTEGER NOT NULL,
+  CONSTRAINT user_roles_idx UNIQUE (userId, role),
+  FOREIGN KEY (userId) REFERENCES users (id) ON DELETE CASCADE
 );
 
 CREATE TABLE restaurants (
@@ -32,19 +32,19 @@ CREATE TABLE restaurants (
 
 CREATE TABLE meals (
   id              INTEGER PRIMARY KEY DEFAULT nextval('global_seq'),
-  restaurant_id   INTEGER NOT NULL,
-  date_time       TIMESTAMP NOT NULL,
+  restaurantId   INTEGER NOT NULL,
+  date       TIMESTAMP NOT NULL,
   description     TEXT NOT NULL,
   price           INT NOT NULL,
-  FOREIGN KEY (restaurant_id) REFERENCES restaurants (id) ON DELETE CASCADE
+  FOREIGN KEY (restaurantId) REFERENCES restaurants (id) ON DELETE CASCADE
 );
-CREATE INDEX meals_unique_restaurant_datetime_idx ON meals(restaurant_id, date_time);
+CREATE INDEX meals_unique_restaurant_datetime_idx ON meals(restaurantId, date);
 
 CREATE TABLE votes (
   id              INTEGER PRIMARY KEY DEFAULT nextval('global_seq'),
   date            TIMESTAMP NOT NULL,
-  user_id         INTEGER NOT NULL,
-  restaurant_id   INTEGER NOT NULL,
-  FOREIGN KEY (restaurant_id) REFERENCES restaurants (id) ON DELETE CASCADE,
-  FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
+  userId         INTEGER NOT NULL,
+  restaurantId   INTEGER NOT NULL,
+  FOREIGN KEY (restaurantId) REFERENCES restaurants (id) ON DELETE CASCADE,
+  FOREIGN KEY (userId) REFERENCES users (id) ON DELETE CASCADE
 );

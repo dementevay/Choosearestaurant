@@ -36,13 +36,13 @@ public class VoteRepositoryImpl implements VoteRepository {
     }
 
     @Override
-    public Vote getByUserId(int user_id){
+    public Vote getByUserId(int userId){
         Vote vote;
         try{
             vote = em.createNamedQuery(Vote.GET_BY_USER_ID, Vote.class)
-                    .setParameter("user_id", user_id).getSingleResult();
+                    .setParameter("userId", userId).getSingleResult();
         } catch (Exception e) {
-            vote = new Vote(0, DateTimeForTests.localDate, user_id, 0);
+            vote = new Vote(0, DateTimeForTests.localDate, userId, 0);
         }
         return vote;
     }

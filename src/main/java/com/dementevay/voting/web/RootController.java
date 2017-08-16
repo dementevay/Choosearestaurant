@@ -47,7 +47,7 @@ public class RootController extends RestaurantAbstractController {
             model.addAttribute("dateTime", DateTimeForTests.localDateTime);
         }
 
-        List<RestaurantWithMenu> list = getAllByDate(DateTimeForTests.localDateTime);
+        List<RestaurantWithMenu> list = getAllByDate(DateTimeForTests.localDate);
         model.addAttribute("restaurants_list", list);
 
         Vote vote = voteController.getByUserId(AuthorizedUser.id());
@@ -82,8 +82,8 @@ public class RootController extends RestaurantAbstractController {
     }
 
     @GetMapping("/vote")
-    public String setVote(@RequestParam(value = "restaurant_id") int restaurant_id) {
-        Vote vote = new Vote(null, DateTimeForTests.localDate, AuthorizedUser.id(), restaurant_id);
+    public String setVote(@RequestParam(value = "restaurantId") int restaurantId) {
+        Vote vote = new Vote(null, DateTimeForTests.localDate, AuthorizedUser.id(), restaurantId);
         voteController.save(vote);
         return "redirect:/";
     }
@@ -91,11 +91,11 @@ public class RootController extends RestaurantAbstractController {
     @GetMapping("/editRestaurant")
     public String saveRestaurant(@RequestParam(value = "id") int id, Model model) {
         if (id != 0) {
-            model.addAttribute("restaurant", super.getForDate(id, DateTimeForTests.localDateTime));
+            model.addAttribute("restaurant", super.getForDate(id, DateTimeForTests.localDate));
         } else {
             model.addAttribute("restaurant",
                     new RestaurantWithMenu(id, "",
-                            Arrays.asList(new Meal(id, 0, "", 0, DateTimeForTests.localDate))));
+                            Arrays.asList()));
         }
         return "restaurant";
     }
@@ -114,46 +114,45 @@ public class RootController extends RestaurantAbstractController {
 
     @PostMapping("/editMeal")
     public String editMeal(@RequestParam(value = "id") int id,
-                           @RequestParam(value = "restaurant_id") int restaurant_id,
+                           @RequestParam(value = "restaurantId") int restaurantId,
                            @RequestParam(value = "dateTime") LocalDate dateTime,
                            @RequestParam(value = "description") String description,
                            @RequestParam(value = "price") int price,
                            Model model) {
 
         try {
-            Meal meal = new Meal(id, restaurant_id, description, price, dateTime);
+            Meal meal = new Meal(id, restaurantId, description, price, dateTime);
             super.serviceMeal.save(meal,AuthorizedUser.id());
         } catch (Exception e) {
-            if (restaurant_id == 0) {
+            if (restaurantId == 0) {
                 super.LOG.info("RESTAURANT NOT EXIST, food should belong to a restaurant.");
             }
         }
 
-        model.addAttribute("id", restaurant_id);
+        model.addAttribute("id", restaurantId);
         return "redirect:/editRestaurant";
     }
 
     @GetMapping("newMeal")
-    public String newMeal (@RequestParam(value = "restaurant_id") int restaurant_id,
+    public String newMeal (@RequestParam(value = "restaurantId") int restaurantId,
                            Model model){
-        Meal meal = new Meal(0,restaurant_id, "", 0, DateTimeForTests.localDate );
+        Meal meal = new Meal(0,restaurantId, "", 0, DateTimeForTests.localDate );
         model.addAttribute("meal", meal);
         return "meal";
     }
 
     @GetMapping("delete_meal")
     public String deleteMeal (@RequestParam(value = "id") int id,
-                              @RequestParam(value = "restaurant_id") int restaurant_id,
+                              @RequestParam(value = "restaurantId") int restaurantId,
                               Model model){
         super.serviceMeal.delete(id, AuthorizedUser.id());
 
-        model.addAttribute("restaurant", super.get(restaurant_id));
+        model.addAttribute("restaurant", super.get(restaurantId));
         return "restaurant";
     }
 
     @GetMapping("delete")
-    public String deleteRestaurant(@RequestParam(value = "id") int id,
-                                   HttpServletRequest request, Model model) {
+    public String deleteRestaurant(@RequestParam(value = "id") int id) {
         super.delete(id);
         return "redirect:/";
     }

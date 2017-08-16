@@ -18,7 +18,7 @@ VALUES ('User3', 'user3@yandex.ru', 'password3', TRUE );
 INSERT INTO users (name, email, password, enabled)
 VALUES ('Admin', 'admin@gmail.com', 'password', TRUE );
 
-INSERT INTO user_roles (role, user_id) VALUES
+INSERT INTO user_roles (role, userId) VALUES
   ('ROLE_ADMIN', 100000),
   ('ROLE_USER', 100001),
   ('ROLE_USER', 100002),
@@ -29,7 +29,7 @@ INSERT INTO restaurants (name) VALUES
   ('McBurger'),
   ('Prague');
 
-INSERT INTO meals (restaurant_id, date_time, description, price) VALUES
+INSERT INTO meals (restaurantId, date, description, price) VALUES
   ('100004','2017-07-26', 'Борщ', 100),
   ('100004','2017-07-26', 'Шашлык', 200),
   ('100004','2017-07-26', 'Картофель жаренный', 50),
@@ -43,7 +43,7 @@ INSERT INTO meals (restaurant_id, date_time, description, price) VALUES
   ('100006','2017-07-26', 'Морс', 800),
   ('100006','2017-07-26', 'Хлеб', 250);
 
-INSERT INTO votes (date, user_id, restaurant_id) VALUES
+INSERT INTO votes (date, userId, restaurantId) VALUES
   ('2017-07-26', 100000, 100006),
   ('2017-07-26', 100001, 100004),
   ('2017-07-26', 100002, 100006);
