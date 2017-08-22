@@ -26,8 +26,6 @@ public class RestaurantWithMenu implements HasId{
         this.menu = menu;
     }
 
-    public RestaurantWithMenu(){}
-
     public Integer getId() {
         return id;
     }
@@ -42,12 +40,6 @@ public class RestaurantWithMenu implements HasId{
 
     public List<Meal> getMenu() {
         return menu;
-    }
-
-    public String getStringMenu () {
-        StringBuilder str = new StringBuilder();
-        getMenu().forEach(m -> str.append(m.toString() + ";"));
-        return str.toString();
     }
 
 }

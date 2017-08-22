@@ -19,6 +19,14 @@ public interface MealService {
 
     void delete(int id, int user_id);
 
+    void deleteAll(int userId) ;
+
+    void deleteAllByDate(LocalDate localDate, int userId) ;
+
+    void deleteByRestaurant (int restaurantId, int userId);
+
+    void deleteByRestaurantAndDay (int restaurantId, LocalDate localDate, int userId);
+
     List<Meal> getAll();
 
     void save(Meal meal, int user_id);

@@ -20,12 +20,12 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "votes")
 public class Vote extends BaseEntity{
-    public static final String GET_ALL_BY_DAY = "Vote.getAllByDay";
-    public static final String GET_BY_ID = "Vote.getById";
-    public static final String GET_BY_USER_ID = "Vote.getByUserId";
-    public static final String GET_ALL = "Vote.getAll";
+    public static final String GET_ALL_BY_DAY = "Vote.get all by day";
+    public static final String GET_BY_ID = "Vote.get by id";
+    public static final String GET_BY_USER_ID = "Vote.get by user id";
+    public static final String GET_ALL = "Vote.get all";
     public static final String SAVE = "Vote.save";
-    public static final String IS_EXIST = "Vote.isExist";
+    public static final String IS_EXIST = "Vote.is exist";
 
     @Column(name = "date", nullable = false)
     @JsonFormat(pattern = "yyyy-MM-dd")

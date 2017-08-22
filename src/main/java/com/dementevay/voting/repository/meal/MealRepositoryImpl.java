@@ -51,8 +51,45 @@ public class MealRepositoryImpl implements MealRepository {
     }
 
     @Override
+    @Transactional
+    public void deleteAll(int userId) {
+        if (isAdmin(userId)) {
+            em.createNamedQuery(Meal.DELETE_ALL).executeUpdate();
+        }
+    }
+
+    @Override
+    @Transactional
+    public void deleteAllByDate(LocalDate localDate, int userId) {
+        if (isAdmin(userId)) {
+            em.createNamedQuery(Meal.DELETE_ALL_BY_DATE).setParameter("date", localDate).executeUpdate();
+        }
+    }
+
+    @Override
+    @Transactional
+    public void deleteByRestaurant(int restaurantId, int userId) {
+        if (isAdmin(userId)) {
+            em.createNamedQuery(Meal.DELETE_BY_RESTAURANT)
+                    .setParameter("restaurantId", restaurantId)
+                    .executeUpdate();
+        }
+    }
+
+    @Override
+    @Transactional
+    public void deleteByRestaurantAndDay(int restaurantId, LocalDate localDate, int userId) {
+        if (isAdmin(userId)) {
+            em.createNamedQuery(Meal.DELETE_BY_RESTAURANT_DATE)
+                    .setParameter("restaurantId", restaurantId)
+                    .setParameter("date", localDate)
+                    .executeUpdate();
+        }
+    }
+
+    @Override
     public List<Meal> getAll() {
-        return null;
+        return em.createNamedQuery(Meal.GET_ALL, Meal.class).getResultList();
     }
 
     @Override
@@ -67,13 +104,13 @@ public class MealRepositoryImpl implements MealRepository {
         }
     }
 
-    @Override
+    /*@Override
     @Transactional
     public Meal create(String name, String menu, int userId) {
         return null;
-    }
+    }*/
 
-    private boolean isAdmin (int userId) {
+    private boolean isAdmin(int userId) {
         User u = em.createNamedQuery(User.GET_USER_ROLE, User.class)
                 .setParameter("id", userId).getSingleResult();
         return u.getRoles().contains(Role.ROLE_ADMIN);

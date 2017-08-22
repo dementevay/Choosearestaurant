@@ -64,7 +64,7 @@
             <td>
                 <c:forEach items="${restaurant.menu}" var="meal" varStatus="status">
                     <jsp:useBean id="meal" type="com.dementevay.voting.model.Meal"/>
-                    <c:out value="${meal.description}"/> : <c:out value="${meal.price}"/> <br>
+                    <c:out value="${meal.description}"/> : <c:out value="${meal.price} р."/> <br>
                 </c:forEach>
             </td>
             <td>

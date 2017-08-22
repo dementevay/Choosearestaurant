@@ -21,7 +21,7 @@ import java.util.Set;
 @Entity
 @Table(name = "users")
 public class User extends NamedEntity {
-    public static final String GET_ALL = "User.getAll";
+    public static final String GET_ALL = "User.get all";
     public static final String GET_USER_ROLE = "User.ROLES";
 
     @Enumerated(EnumType.STRING)

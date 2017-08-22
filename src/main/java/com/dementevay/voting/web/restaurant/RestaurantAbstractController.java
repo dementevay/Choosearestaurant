@@ -9,7 +9,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.time.LocalDate;
+import java.util.Comparator;
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 
@@ -38,6 +40,7 @@ public abstract class RestaurantAbstractController {
         LOG.info("get all Restaurant by date {}", localDate);
         return serviceRestaurant.getAll().stream()
                 .map(r -> new RestaurantWithMenu(r, serviceMeal.getForRestaurantByDay(r.getId(), localDate)))
+                .sorted(Comparator.comparing(RestaurantWithMenu::getId))
                 .collect(Collectors.toList());
     }
 

@@ -10,18 +10,23 @@ import java.util.List;
  */
 public interface MealRepository {
 
-    public Meal get(int id);
+    Meal get(int id);
 
-    public List<Meal> getForRestaurantByDay(int restaurant_id, LocalDate localDate);
+    List<Meal> getForRestaurantByDay(int restaurant_id, LocalDate localDate);
 
-    public List<Meal> getForRestaurant(int restaurant_id);
+    List<Meal> getForRestaurant(int restaurant_id);
 
-    public void delete(int id, int user_id) ;
+    void delete(int id, int userId) ;
 
-    public List<Meal> getAll() ;
+    void deleteAll(int userId) ;
 
-    void save(Meal meal, int user_id);
+    void deleteAllByDate(LocalDate localDate, int userId) ;
 
-    public Meal create(String name, String menu, int user_id) ;
+    void deleteByRestaurant (int restaurantId, int userId);
 
+    void deleteByRestaurantAndDay (int restaurantId, LocalDate localDate, int userId);
+
+    List<Meal> getAll() ;
+
+    void save(Meal meal, int userId);
 }

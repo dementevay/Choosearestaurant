@@ -42,7 +42,7 @@ public class MealServiceImpl implements MealService{
 
     @Override
     public List<Meal> getAll() {
-        return null;
+        return repository.getAll();
     }
 
     @Override
@@ -55,4 +55,23 @@ public class MealServiceImpl implements MealService{
         return null;
     }
 
+    @Override
+    public void deleteAll(int userId) {
+        repository.deleteAll(userId);
+    }
+
+    @Override
+    public void deleteAllByDate(LocalDate localDate, int userId) {
+        repository.deleteAllByDate(localDate, userId);
+    }
+
+    @Override
+    public void deleteByRestaurant(int restaurantId, int userId) {
+        repository.deleteByRestaurant(restaurantId, userId);
+    }
+
+    @Override
+    public void deleteByRestaurantAndDay(int restaurantId, LocalDate localDate, int userId) {
+        repository.deleteByRestaurantAndDay(restaurantId, localDate, userId);
+    }
 }

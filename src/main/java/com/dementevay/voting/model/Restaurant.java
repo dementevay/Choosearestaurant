@@ -17,9 +17,9 @@ import javax.persistence.*;
 @Table(name = "restaurants")
 public class Restaurant extends NamedEntity {
     public static final String GET_ID = "Restaurant.get";
-    public static final String GET_ALL = "Restaurant.getAll";
-    public static final String DELETE_ID = "Restaurant.delete_id";
-    public static final String DELETE_ALL = "Restaurant.delete_all";
+    public static final String GET_ALL = "Restaurant.get all";
+    public static final String DELETE_ID = "Restaurant.delete id";
+    public static final String DELETE_ALL = "Restaurant.delete all";
 
     public Restaurant(){}
 

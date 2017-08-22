@@ -34,7 +34,6 @@ public class RestaurantRestController extends RestaurantAbstractController {
     @GetMapping(value = "/{id}/{date}")
     public RestaurantWithMenu getForDate(
             @PathVariable("id") int id,
-//            @PathVariable(value = "date", required = false) LocalDateTime localDate) {
             @PathVariable(value = "date", required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate localDate){
         return super.getForDate(id, localDate);
     }

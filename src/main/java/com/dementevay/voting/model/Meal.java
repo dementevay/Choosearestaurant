@@ -17,6 +17,10 @@ import java.time.LocalDate;
         @NamedQuery(name = Meal.GET_ALL, query = "SELECT m FROM Meal m ORDER BY m.id"),
         @NamedQuery(name = Meal.GET, query = "SELECT m FROM Meal m WHERE m.id = :id"),
         @NamedQuery(name = Meal.DELETE, query = "DELETE FROM Meal m WHERE m.id = :id"),
+        @NamedQuery(name = Meal.DELETE_ALL_BY_DATE, query = "DELETE FROM Meal m WHERE m.date = :date"),
+        @NamedQuery(name = Meal.DELETE_ALL, query = "DELETE FROM Meal m"),
+        @NamedQuery(name = Meal.DELETE_BY_RESTAURANT_DATE, query = "DELETE FROM Meal m WHERE m.date = :date AND m.restaurantId = :restaurantId"),
+        @NamedQuery(name = Meal.DELETE_BY_RESTAURANT, query = "DELETE FROM Meal m WHERE m.restaurantId = :restaurantId"),
         @NamedQuery(name = Meal.GET_FOR_RESTAURANT, query = "SELECT m FROM Meal m WHERE m.restaurantId = :id ORDER BY m.id"),
         @NamedQuery(name = Meal.GET_FOR_RESTAURANT_BY_DAY, query = "SELECT m FROM Meal m WHERE m.restaurantId = :id and m.date = :dt ORDER BY m.id")
 })
@@ -28,8 +32,12 @@ public class Meal extends BaseEntity {
     public static final String GET_ALL = "Meal.getAll";
     public static final String GET = "Meal.get";
     public static final String DELETE = "Meal.delete";
-    public static final String GET_FOR_RESTAURANT_BY_DAY = "Meal.get_for_RESTAURANT_by_day";
-    public static final String GET_FOR_RESTAURANT = "Meal.get_for_RESTAURANT";
+    public static final String DELETE_ALL = "Meal.delete all";
+    public static final String DELETE_ALL_BY_DATE = "Meal.delete all by date";
+    public static final String DELETE_BY_RESTAURANT_DATE = "Meal.delete by restaurant and date";
+    public static final String DELETE_BY_RESTAURANT = "Meal.delete by restaurant ";
+    public static final String GET_FOR_RESTAURANT_BY_DAY = "Meal.get for RESTAURANT by day";
+    public static final String GET_FOR_RESTAURANT = "Meal.get for RESTAURANT";
 
     @CollectionTable(name = "restaurants", joinColumns = @JoinColumn(name = "id"))
     @JoinColumn(name = "restaurantId", nullable = false)
