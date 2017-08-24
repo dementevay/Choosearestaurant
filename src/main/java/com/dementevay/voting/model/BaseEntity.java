@@ -1,7 +1,7 @@
 package com.dementevay.voting.model;
 
 import com.dementevay.voting.HasId;
-import com.fasterxml.jackson.annotation.JsonFormat;
+//import com.fasterxml.jackson.annotation.JsonFormat;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;

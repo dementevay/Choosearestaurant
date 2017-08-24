@@ -54,11 +54,11 @@ abstract public class AbstractControllerTest {
                 .build();
     }
 
-    @Before
+    /*@Before
     public void setUp() {
 
     }
-
+*/
     /*protected String getMessage(String code) {
         return messageUtil.getMessage(code, MessageUtil.RU_LOCALE);
     }

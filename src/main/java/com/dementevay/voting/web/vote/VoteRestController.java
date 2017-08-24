@@ -58,5 +58,5 @@ public class VoteRestController extends AbstractVoteController{
         save(vote);
     }
 
-    public void delete(){} //Removing voices is not good idea! (Only if your very need it.)
+    //public void delete(){} //Removing voices is not good idea! (Only if your very need it.)
 }
