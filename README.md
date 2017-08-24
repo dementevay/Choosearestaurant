@@ -9,10 +9,10 @@ Choose a restaurant for dinner!
 Технологии : Maven/ Spring/ JPA(Hibernate)/ REST(Jackson)/ PostrgeSQL/ Tomcat/ Logback
 
 
-##REST API для росторанов, еды и голосов.
+### REST API для росторанов, еды и голосов.
 Ответы в формате json, post запросы в json.
 
-###RESTAURANT `/rest/restaurants`:
+#### RESTAURANT `/rest/restaurants`:
 
 Метод | Действие | Запрос | Пример
 --- | --- | --- | ---
@@ -35,7 +35,7 @@ DELETE | Удалить все рестораны | `/` | /
 7.  curl -X DELETE http://localhost:8080/dem/rest/restaurants/100005
 8.  curl -X DELETE http://localhost:8080/dem/rest/restaurants/
 
-###VOTE `/rest/votes`:
+#### VOTE `/rest/votes`:
 Ответы в формате json, post запросы в json.
 
 Метод | Действие | Запрос | Пример
@@ -57,7 +57,7 @@ PUT | Изменить решение | `/`{vote} | /{vote}
 
 
 
-###MEAL `/rest/meals`:
+#### MEAL `/rest/meals`:
 Ответы в формате json, post запросы в json.
 
 Метод | Действие | Запрос | Пример
