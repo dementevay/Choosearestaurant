@@ -93,7 +93,7 @@
 </form>
 <hr>
 <p style="text-align: center">
-    Made by Dementev Andrey as test task. (10.08.2017)
+    Made by <a href="https://dementevay.github.io/" target="_blank">Dementev Andrey</a>  as <a href="https://github.com/dementevay/Choosearestaurant" target="_blank"> test task</a>. (10.08.2017)
 </p>
 </body>
 </html>
