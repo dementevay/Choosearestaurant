@@ -1,4 +1,4 @@
-dl {
+/*dl {
     background: none repeat scroll 0 0 #FAFAFA;
     margin: 8px 0;
     padding: 0;
@@ -13,7 +13,21 @@ dd {
     display: inline-block;
     margin-left: 8px;
     vertical-align: top;
-}
+}*/
+@import url('https://fonts.googleapis.com/css?family=Lato|Raleway');
+
+/*body {
+    background-color: #f2f2f2;
+    font-family: "Lato", serif;
+    font-weight: 300;
+    font-size: 26px;
+    color: #555;
+
+    -webkit-font-smoothing: antialiased;
+    -webkit-overflow-scrolling: touch;
+
+    margin-top: 70px;
+}*/
 
 .normal {
     color: green;
@@ -21,4 +35,27 @@ dd {
 
 .active_vote {
     color: red;
+}
+
+.centered {
+    text-align: center;
+}
+
+#jumbotron {
+    margin-top: -10px;
+    padding-top: 50px;
+    /*text-align: center;*/
+    /*background: url("images/18.jpg") no-repeat center top;*/
+    /*min-height: 500px;*/
+    /*width: 100%;*/
+    /*font-family: "Lato", monospace ;*/
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#headerwrap {
+    padding-top: 50px;
 }

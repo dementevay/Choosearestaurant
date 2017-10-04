@@ -62,7 +62,7 @@ public class RootController extends RestaurantAbstractController {
         try {
             if (!request.getParameter("user_id").isEmpty()) {
                 int id = Integer.valueOf(request.getParameter("user_id"));
-                AuthorizedUser.setId(id);
+                //AuthorizedUser.setId(id);
                 model.addAttribute("authenticated_user", AuthenticatedUser.getName(id));
             }
         } catch (Exception e) {
@@ -160,6 +160,11 @@ public class RootController extends RestaurantAbstractController {
     @GetMapping(value = "/setdatetime/{datetime}")
     public void setDateTime(@PathVariable("datetime") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime localDateTime) {
         DateTimeForTests.setDateTime(localDateTime);
+    }
+
+    @GetMapping(value = "/login")
+    public String login() {
+        return "login";
     }
 
 }

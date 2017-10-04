@@ -7,22 +7,22 @@ ALTER SEQUENCE global_seq RESTART WITH 100000;
 
 -- user1
 INSERT INTO users (name, email, password, enabled)
-VALUES ('User1', 'user1@yandex.ru', 'password1', TRUE );
+VALUES ('User1', 'user1@yandex.ru', '$2a$10$ZMJUBhToLuVGtgUVhkIHPualk847/f1Bb3n5KbU5ItANRu/1/t6QO', TRUE );
 -- user2
 INSERT INTO users (name, email, password, enabled)
-VALUES ('User2', 'user2@yandex.ru', 'password2', TRUE );
+VALUES ('User2', 'user2@yandex.ru', '$2a$10$6oqp.fW9j7z7EKIpCKIgUekqEmS/A8Y.cQdlWb49Rm5sJGCL7NZ5W', TRUE );
 -- user3
 INSERT INTO users (name, email, password, enabled)
-VALUES ('User3', 'user3@yandex.ru', 'password3', TRUE );
+VALUES ('User3', 'user3@yandex.ru', '$2a$10$RhAiGzRlORqCFiafVbQgC.8loRkDewSSdxbK/UJOtZ0lnm7mVdwfu', TRUE );
 -- admin
 INSERT INTO users (name, email, password, enabled)
-VALUES ('Admin', 'admin@gmail.com', 'password', TRUE );
+VALUES ('Admin', 'admin@gmail.com', '$2a$10$9ifN7k1EP.VntL16LiIWgu3uT/aF4//c0xl.AO0Z.hIGhd.b/IEGy', TRUE );
 
 INSERT INTO user_roles (role, userId) VALUES
-  ('ROLE_ADMIN', 100000),
+  ('ROLE_USER', 100000),
   ('ROLE_USER', 100001),
   ('ROLE_USER', 100002),
-  ('ROLE_USER', 100003);
+  ('ROLE_ADMIN', 100003);
 
 INSERT INTO restaurants (name) VALUES
   ('Берёзка'),

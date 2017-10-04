@@ -15,7 +15,9 @@ import java.util.Set;
  */
 @NamedQueries({
         @NamedQuery(name = User.GET_ALL, query = "SELECT u FROM User u"),
-        @NamedQuery(name = User.GET_USER_ROLE, query = "SELECT u FROM User u WHERE u.id = :id")
+        @NamedQuery(name = User.GET_USER_ROLE, query = "SELECT u FROM User u WHERE u.id = :id"),
+        @NamedQuery(name = User.DELETE, query = "DELETE FROM User u WHERE u.id = :id"),
+        @NamedQuery(name = User.BY_EMAIL, query = "SELECT u FROM User u WHERE u.email = :email")
 })
 
 @Entity
@@ -23,6 +25,8 @@ import java.util.Set;
 public class User extends NamedEntity {
     public static final String GET_ALL = "User.get all";
     public static final String GET_USER_ROLE = "User.ROLES";
+    public static final String DELETE = "User.delete";
+    public static final String BY_EMAIL = "User.get by email";
 
     @Enumerated(EnumType.STRING)
     @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "userId"))

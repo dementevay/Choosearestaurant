@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Название страницы</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!--div#page>p.strong-red{Красный жирный параграф $}*2+p.light-blue{Голубой легкий параграф $}*2-->
+<div id="page">
+    <!--div#navigation-->
+    <div id="navigation">
+        <!-- ul#styles>li{Пункт $}*5 -->
+        <ul id="styles">
+            <li><a href="#">Пункт 1</a></li>
+            <li>
+                <a href="#">Пункт 2</a>
+                <!-- ul.dropdown>li*4>a{Ссылка $} -->
+                <ul class="dropdown">
+                    <li><a href="#">Ссылка 1</a></li>
+                    <li><a href="#">Ссылка 2</a></li>
+                    <li><a href="#">Ссылка 3</a></li>
+                    <li><a href="#">Ссылка 4</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Пункт 3</a></li>
+            <li><a href="#">Пункт 4</a></li>
+            <li><a href="#">Пункт 5</a></li>
+            <li><a href="#">Пункт 6</a></li>
+        </ul>
+    </div>
+
+    <div id="header">
+        <a href="index.html" class="logo" name="Логотип">
+            <img src="images/logo.png" alt="Логотип">
+        </a>
+        <form class="search">
+            <input type="text">
+            <input type="button" value="Поиск">
+        </form>
+
+    </div>
+
+    <!--div#content>div#article+div#sidebar-->
+    <div id="content">
+        <div id="article">
+            <p>Наш параграф</p>
+            <p>Наш параграф</p>
+            <p>Наш параграф</p>
+            <p>Наш параграф</p>
+            <div class="combinator">Наш параграф</div>
+            <p>Наш параграф</p>
+            <p><a href="index1.html" class="pseudo-class">Псевдо класс</a></p>
+            <p class="pseudo-element">Много много разного текста.</p>
+            <p class="first-letter">Много много разного текста.Много много разного текста.Много много разного текста.Много много разного текста.Много много разного текста.Много много разного текста.Много много разного текста.Много много разного текста.Много много разного текста.Много много разного текста.Много много разного текста.Много много разного текста.</p>
+        </div>
+        <div id="sidebar">
+            <!-- li{Пункт $}*4 -->
+            <li>Пункт 1</li>
+            <li>Пункт 2</li>
+            <li>Пункт 3</li>
+            <li>Пункт 4</li>
+        </div>
+    </div>
+    <div>
+        <p>Авторские права</p>
+    </div>
+    <!--<div id="fixed">
+        <p>Обычный контент</p>
+        <div id="modal-body"></div>
+    </div>-->
+</div>
+</body>
+</html>
