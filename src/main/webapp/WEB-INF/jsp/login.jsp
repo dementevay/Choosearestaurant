@@ -64,6 +64,13 @@
         </p>
         <br/>
     </div>
+    <div class="container centered">
+        <div class="lead">
+            <br>
+            <b>Пользователь</b> может только голосовать и менять дату. <br>
+            <b>Администратор</b> дополнительно может удалять, добавлять, редактировать.
+        </div>
+    </div>
 </div>
 
 <jsp:include page="fragments/footer.jsp"/>

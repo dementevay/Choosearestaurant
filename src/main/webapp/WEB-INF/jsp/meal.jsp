@@ -15,8 +15,6 @@
         <div class="row centered">
             <div class="col-lg-8 col-lg-offset-2">
                 <section>
-                    <sec:authorize access="isAuthenticated()">
-
                     <jsp:useBean id="meal" type="com.dementevay.voting.model.Meal" scope="request"/>
                     <form method="post" action="editMeal?${_csrf.parameterName}=${_csrf.token}">
                         <input type="hidden" value="<c:out value="${meal.id}"/>" name="id">
@@ -26,7 +24,6 @@
                         <input type="number" value="<c:out value="${meal.price}"/>" name="price">
                         <button>Сохранить</button>
                     </form>
-                    </sec:authorize>
                 </section>
             </div>
         </div>

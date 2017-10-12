@@ -17,4 +17,6 @@ public interface RestaurantService {
     void delete(int id, int userId);
 
     void deleteAll(int userId);
+
+    void ResetDatabase();
 }

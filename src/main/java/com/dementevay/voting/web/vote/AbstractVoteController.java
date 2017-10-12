@@ -14,11 +14,11 @@ import java.util.List;
 /**
  * Created by Andrey Dementev on 31.07.17.
  */
-public class AbstractVoteController {
-    private final Logger LOG = LoggerFactory.getLogger(getClass());
+public abstract class AbstractVoteController {
+    protected final Logger LOG = LoggerFactory.getLogger(getClass());
 
-    private final VoteService service;
-    private final RestaurantService restaurantService;
+    protected final VoteService service;
+    protected final RestaurantService restaurantService;
 
     public AbstractVoteController(VoteService service, RestaurantService restaurantService) {
         this.service = service;

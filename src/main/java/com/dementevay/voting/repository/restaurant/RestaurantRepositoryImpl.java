@@ -3,6 +3,7 @@ package com.dementevay.voting.repository.restaurant;
 import com.dementevay.voting.model.Restaurant;
 import com.dementevay.voting.model.Role;
 import com.dementevay.voting.model.User;
+import com.dementevay.voting.util.SQLReset;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,6 +17,12 @@ public class RestaurantRepositoryImpl implements RestaurantRepository {
 
     @PersistenceContext
     private EntityManager em;
+
+    @Transactional
+    public void ResetDatabase(){
+        em.createNativeQuery(SQLReset.init).executeUpdate();
+        em.createNativeQuery(SQLReset.populate).executeUpdate();
+    }
 
     @Override
     public Restaurant get(int id) {

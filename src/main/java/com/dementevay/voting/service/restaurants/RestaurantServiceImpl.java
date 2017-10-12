@@ -49,4 +49,8 @@ public class RestaurantServiceImpl implements RestaurantService {
     public void deleteAll(int userId) {
         repository.deleteAll(userId);
     }
+
+    public void ResetDatabase(){
+        repository.ResetDatabase();
+    }
 }

@@ -12,8 +12,10 @@ import java.time.LocalTime;
 public class DateTimeForTests {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     public static LocalDateTime localDateTime = LocalDateTime.parse("2017-07-26T10:00:00");
+    public static LocalTime elevenOclock = LocalTime.parse("10:59:00");
     public static LocalDate localDate = localDateTime.toLocalDate();
     public static LocalTime localTime = localDateTime.toLocalTime();
+
 
     private DateTimeForTests(){}
 

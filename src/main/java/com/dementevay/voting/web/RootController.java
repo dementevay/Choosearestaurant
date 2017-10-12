@@ -10,12 +10,15 @@ import com.dementevay.voting.service.restaurants.RestaurantService;
 import com.dementevay.voting.to.RestaurantWithMenu;
 import com.dementevay.voting.util.AuthenticatedUser;
 import com.dementevay.voting.web.restaurant.RestaurantAbstractController;
-import com.dementevay.voting.web.vote.AbstractVoteController;
+import com.dementevay.voting.web.vote.VoteRestController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDate;
@@ -29,10 +32,10 @@ import java.util.List;
 @Controller
 public class RootController extends RestaurantAbstractController {
 
-    private final AbstractVoteController voteController;
+    private final VoteRestController voteController;
 
     @Autowired
-    public RootController(RestaurantService restaurantService, MealService serviceMeal, AbstractVoteController voteController) {
+    public RootController(RestaurantService restaurantService, MealService serviceMeal, VoteRestController voteController) {
         super(restaurantService, serviceMeal);
         this.voteController = voteController;
     }
@@ -85,6 +88,7 @@ public class RootController extends RestaurantAbstractController {
     public String setVote(@RequestParam(value = "restaurantId") int restaurantId) {
         Vote vote = new Vote(null, DateTimeForTests.localDate, AuthorizedUser.id(), restaurantId);
         voteController.save(vote);
+        //TODO '/vote' После голосования обновление таблицы должно происходить в js, не должно быть редиректа на '/'
         return "redirect:/";
     }
 
@@ -151,9 +155,10 @@ public class RootController extends RestaurantAbstractController {
         return "restaurant";
     }
 
-    @GetMapping("delete")
-    public String deleteRestaurant(@RequestParam(value = "id") int id) {
+    @PostMapping("delete/{id}")
+    public String deleteRestaurant(@PathVariable("id") int id) {
         super.delete(id);
+        //TODO 'delete/' убрать редирект, срока должна обновляться сама
         return "redirect:/";
     }
 

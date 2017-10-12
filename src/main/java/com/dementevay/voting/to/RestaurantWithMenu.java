@@ -42,5 +42,9 @@ public class RestaurantWithMenu implements HasId{
         return menu;
     }
 
+    public boolean menuIsEmpty(){
+        return menu.isEmpty();
+    }
+
 }
 
