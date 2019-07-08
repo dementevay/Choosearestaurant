@@ -4,8 +4,6 @@ Choose a restaurant for dinner!
 
 Проект по выбору ресторана для обеда по [тестовому заданию](https://docs.google.com/document/d/1f8QLJ3S2tUH_o_cKcUcuEedt1pttf04LU46tLUb35Os/edit?usp=sharing)
 
-Приложение в работе можно посмотреть: [http://78.107.252.233:8080/voting/](http://78.107.252.233:8080/voting/)
-
 Технологии : Maven/ Spring/ JPA(Hibernate)/ REST(Jackson)/ PostrgeSQL/ Tomcat/ Logback
 
 
